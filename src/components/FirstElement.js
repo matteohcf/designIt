@@ -47,7 +47,7 @@ useEffect(() => {
             </div>
             <Swiper className='swiper_class'
                 spaceBetween={0}
-                slidesPerView={3}
+                slidesPerView={4}
                 loop={true} // Opzionale: abilita il looping delle slide
                 /* onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)} */

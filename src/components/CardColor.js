@@ -23,9 +23,13 @@ function CardColor(props) {
             })
             .then((response) => {
                 const newLikes = response.data.likes;
-                if (newLikes != null) {
+                /* console.log(response.data); */
+                if (response.data.isLiked) {
                     setLikes(newLikes);
-                    setFill("red"); // Imposta il colore del cuore a rosso quando viene premuto il pulsante "like"
+                    setFill("red");
+                } else {
+                    setFill("white");
+                    setLikes(newLikes);
                 }
                 setError(null);
             })
