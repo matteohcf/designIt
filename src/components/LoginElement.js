@@ -81,15 +81,18 @@ function Login() {
         marginTop: "5%",
       }}
     >
-      <Container className="login_container" maxWidth="sm">
+      <Container className="login_container mt-5" maxWidth="sm">
         <form onSubmit={handleSubmit}>
-          <Typography
+          {/* <Typography
             style={{ marginBottom: "20px" }}
             variant="h2"
             component="h2"
           >
             Login
-          </Typography>
+          </Typography> */}
+          <div className="titolo_principale mb-3">
+                <span className='titolo_principale_background'>Login</span>:
+            </div>
           {error && (
             <Alert style={{ marginBottom: "20px" }} severity="error">
               {error}
@@ -101,9 +104,10 @@ function Login() {
             onChange={handleEmailChange}
             variant="filled"
             id="email"
-            label="Email address"
+            label="Email"
             fullWidth
             style={{ marginBottom: "20px" }}
+            color="secondary"
           />
           <TextField
             type={showPassword ? "text" : "password"}
@@ -114,6 +118,7 @@ function Login() {
             label="Password"
             fullWidth
             style={{ marginBottom: "20px" }}
+            color="secondary"
             InputProps={{
               endAdornment: (
                 <IconButton className="showPassword_button" onClick={handleShowPassword}>
@@ -122,7 +127,7 @@ function Login() {
               ),
             }}
           />
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" size="large" color="secondary">
             Login
           </Button>
           <Typography

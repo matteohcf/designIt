@@ -77,15 +77,18 @@ function Register() {
         marginTop: "5%",
       }}
     >
-      <Container className="register_container" maxWidth="sm">
+      <Container className="register_container mt-5" maxWidth="sm">
         <form onSubmit={handleSubmit}>
-          <Typography
+          {/* <Typography
             style={{ marginBottom: "20px" }}
             variant="h2"
             component="h2"
           >
             Register
-          </Typography>
+          </Typography> */}
+          <div className="titolo_principale mb-3">
+                <span className='titolo_principale_background'>Register</span>:
+            </div>
           {apiResponse && (
             <Alert
               style={{ marginBottom: "20px" }}
@@ -103,6 +106,7 @@ function Register() {
             label="Username"
             fullWidth
             style={{ marginBottom: "20px" }}
+            color="secondary"
           />
           <TextField
             type="email"
@@ -110,9 +114,10 @@ function Register() {
             onChange={handleEmailChange}
             variant="filled"
             id="filled-basic"
-            label="Email address"
+            label="Email"
             fullWidth
             style={{ marginBottom: "20px" }}
+            color="secondary"
           />
           <div>
             <TextField
@@ -124,6 +129,7 @@ function Register() {
               label="Password"
               fullWidth
               style={{ marginBottom: "10px" }}
+              color="secondary"
               InputProps={{
                 endAdornment: (
                   <IconButton className="showPassword_button" onClick={handleShowPassword}>
@@ -135,12 +141,13 @@ function Register() {
             <Button
               size="small"
               style={{ marginBottom: "25px" }}
+              color="secondary"
               onClick={handleGeneratePassword}
             >
               Genera password
             </Button>
           </div>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" size="large" color="secondary">
             Register
           </Button>
           <Typography
