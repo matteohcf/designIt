@@ -126,6 +126,15 @@ body {
     margin-bottom: 20rem;
 }
 
+/* TODO */
+.bottone_elimina_palette {
+    margin-top: 0.4rem;
+}
+
+.bottone_elimina_palette:hover {
+    transform: scale(1.04);
+}
+
  /* Footer */
  .page-footer {
     color: white;

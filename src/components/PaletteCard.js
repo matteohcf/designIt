@@ -103,7 +103,7 @@ function PaletteCard () {
             {/* Modal di conferma */}
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Conferma</Modal.Title>
+                    <Modal.Title>Conferma pubblicazione</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Sei sicuro di voler pubblicare questa palette?</Modal.Body>
                 <Modal.Footer>
