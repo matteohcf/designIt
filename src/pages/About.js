@@ -1,8 +1,9 @@
+import AboutPage from "../components/AboutPage";
 
 function About() {
   return (
     <>
-      Hello
+      <AboutPage/>
     </>
   );
 }
