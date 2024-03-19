@@ -34,7 +34,7 @@ function CardColor(props) {
             });
         }
     };
-
+    
     useEffect(() => {
         axios.post("http://localhost:8888/Programmazione%20Web/paletteAPI/getLikedPalette.php", {
             id_utente: id_utente_display,
