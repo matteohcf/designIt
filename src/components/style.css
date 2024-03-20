@@ -15,6 +15,7 @@ body {
     )!important; */
     /* margin: 0; */
     padding: 0;
+    min-height: 100vh; /* Per allungare il body a tutta la pagina */
   }
 
 @font-face {
@@ -124,7 +125,7 @@ body {
 
 .sottotitolo_principale_home_div {
     margin-top: 3px;
-    max-width: 60%;
+    /* max-width: 60%; */
     line-height: 155%;
 }
 
@@ -143,11 +144,7 @@ body {
 .palette {
     width: 50%;
 }
-
-.container-principale {
-    margin-bottom: 20rem;
-}
-
+ 
 /* TODO */
 .bottone_elimina_palette {
     margin-top: 0.5rem;
@@ -313,7 +310,7 @@ input {
 
 /* PalettePage */
 .cointainer_principale {
-    margin-bottom: 20rem;
+    margin-bottom: 10rem;
 }
 
 .bi-arrow-down-circle-fill {
@@ -325,3 +322,107 @@ input {
     transform: rotate(-4deg) scale(1.1);
 }
   
+/* Infinite Scroll */
+.scroller {
+    max-width: 900px;
+    position: static;
+  }
+  
+.scroller__inner {
+    padding-block: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+
+.scroller[data-direction="left"] {
+    --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+    --_animation-duration: 40s;
+}
+
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
+
+.tag-list {
+    margin: 0;
+    padding-inline: 0;
+    list-style: none;
+}
+
+.tag-list li {
+    padding: 1rem 3rem 1rem 3rem;
+    background-color: transparent;
+    border-radius: 1.2rem;    
+    border: 1px solid  #eceff11c;
+    /* transition: filter 0.3s ease; */   /* Collegato a filter in li:hover per aumentare la luminosità */
+
+}
+
+li:hover {
+    transform: scale(1.05);
+    border: 1px solid #eceff158;
+    /* filter: brightness(70%); */   /* Per aumentare la luminosità all'hover */
+}
+
+/* .BsFillPaletteFill:hover {
+    transform: rotate(-4deg) scale(1.1);
+} */
+
+.infinite_scroll {
+    height: max-content;
+}
+
+/* About Contatti */
+.container_contatti {
+    color: white;
+}
+
+.titolo_contatti {
+    font-family: "Poppins-Bold";
+    font-size: 42px;
+    line-height: 95%;
+    letter-spacing: 0.5px;
+}
+
+.sottotitolo_contatti {
+    color: rgba(228, 228, 255, 0.8);
+    font-family: "Roboto-Regular";
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.info_contatti {
+    margin-top: -0.8rem;
+    font-family: "Roboto-Regular";
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.7px;
+}

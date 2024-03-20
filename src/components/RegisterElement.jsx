@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-/* import './RegisterElement.css'; */
+import ReCAPTCHA from "react-google-recaptcha";
 import './style.css';
 
 function Register() {
@@ -18,6 +18,8 @@ function Register() {
   const [password, setPassword] = useState("");
   const [apiResponse, setApiResponse] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [recaptchaValue, setRecaptchaValue] = useState(""); /* Recapcha */
   const generatePassword = () => {
     const length = 12;
     const charset =
@@ -49,9 +51,18 @@ function Register() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  /* Recapcha */
+  const onChangeRecaptcha = (value) => {
+    setRecaptchaValue(value);
+    setError(""); /* Reset dell'errore */
+  }
 
+  const handleSubmit = (event) => {
+    if (!recaptchaValue) { /* Rechapta errore Obbligatorio */
+      setError("Captcha obbligatorio");
+      return;
+    }
+    event.preventDefault();
     axios
       .post("http://localhost:8888/Programmazione%20Web/paletteAPI/register.php", {
         username: username,
@@ -77,8 +88,8 @@ function Register() {
         marginTop: "5%",
       }}
     >
-      <Container className="register_container mt-5" maxWidth="sm">
-        <form onSubmit={handleSubmit}>
+      <Container className="register_container cointainer_principale" maxWidth="sm">
+        <form /* onSubmit={handleSubmit} */>
           {/* <Typography
             style={{ marginBottom: "20px" }}
             variant="h2"
@@ -89,6 +100,11 @@ function Register() {
           <div className="titolo_principale mb-3">
                 <span className='titolo_principale_background'>Register</span>:
             </div>
+          {error && (
+            <Alert style={{ marginBottom: "20px" }} severity="error">
+              {error}
+            </Alert>
+          )}
           {apiResponse && (
             <Alert
               style={{ marginBottom: "20px" }}
@@ -147,7 +163,7 @@ function Register() {
               Genera password
             </Button>
           </div>
-          <Button variant="contained" type="submit" size="large" color="secondary">
+          <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
             Register
           </Button>
           <Typography
@@ -157,6 +173,12 @@ function Register() {
           >
             Hai già un account? <Link to="/login">< strong>Login</strong> </Link>
           </Typography>
+          {/* Recapta */}
+          <ReCAPTCHA className="mt-3"
+            theme="dark"
+            sitekey="6Lf7A58pAAAAAHY5UnYVj-E8O_TSjMQlwg4p14XG"
+            onChange={onChangeRecaptcha}
+          />
         </form>
       </Container>
     </Box>

@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { login, logout } from '../features/Auth/LoggedIn'
+import ReCAPTCHA from "react-google-recaptcha";
 /* import './LoginElement.css'; */
 import './style.css';
 
@@ -21,6 +22,7 @@ function Login() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [recaptchaValue, setRecaptchaValue] = useState(""); /* Recapcha */
 
   /* Variabile redux store */
   const loggedIn = useSelector((state) => state.LoggedIn.value);
@@ -45,7 +47,17 @@ function Login() {
     setShowPassword(!showPassword);
   };
 
+  /* Recapcha */
+  const onChangeRecaptcha = (value) => {
+    setRecaptchaValue(value);
+    setError(""); /* Reset dell'errore */
+  }
+
   const handleSubmit = (event) => {
+    if (!recaptchaValue) { /* Rechapta errore Obbligatorio */
+      setError("Captcha obbligatorio");
+      return;
+    }
     event.preventDefault();
     axios
       .post("http://localhost:8888/Programmazione%20Web/paletteAPI/login.php", {
@@ -81,8 +93,8 @@ function Login() {
         marginTop: "5%",
       }}
     >
-      <Container className="login_container mt-5" maxWidth="sm">
-        <form onSubmit={handleSubmit}>
+      <Container className="login_container cointainer_principale" maxWidth="sm">
+        <form /* onSubmit={handleSubmit} */>
           {/* <Typography
             style={{ marginBottom: "20px" }}
             variant="h2"
@@ -127,7 +139,7 @@ function Login() {
               ),
             }}
           />
-          <Button variant="contained" type="submit" size="large" color="secondary">
+          <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
             Login
           </Button>
           <Typography
@@ -137,6 +149,12 @@ function Login() {
           >
             Non hai un account? <Link to="/register"> <strong>Register</strong> </Link>
           </Typography>
+          {/* Recapta */}
+          <ReCAPTCHA className="mt-3"
+            theme="dark"
+            sitekey="6Lf7A58pAAAAAHY5UnYVj-E8O_TSjMQlwg4p14XG"
+            onChange={onChangeRecaptcha}
+          />
         </form>
       </Container>
     </Box>
