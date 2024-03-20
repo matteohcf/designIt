@@ -70,7 +70,7 @@ function MyPaletteDashboard() {
                 {cards.slice(0, visibleCards).map((colors, index) => (
                     <Col lg={3} md={6} xs={12} key={index}>
                         <CardColor colors={colors} />
-                        <Button className='bottone_elimina_palette' variant="danger" size='sm' onClick={() => handleShowModal(colors.id_palette)}>Elimina</Button>
+                        <Button className='bottone_elimina_palette float-start' variant="danger" size='sm' onClick={() => handleShowModal(colors.id_palette)}>Elimina</Button>
                         {/* <span style={{ color: 'white' }}>ID: {colors.id_palette}</span> */}
                     </Col>
                 ))}

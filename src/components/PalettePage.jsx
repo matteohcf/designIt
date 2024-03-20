@@ -1,4 +1,3 @@
-/* import './PalettePage.css'; */
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from "axios";
 import { useEffect, useState } from 'react';
