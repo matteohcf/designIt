@@ -64,7 +64,7 @@ function Register() {
     }
     event.preventDefault();
     axios
-      .post("http://localhost:8888/Programmazione%20Web/paletteAPI/register.php", {
+      .post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/register.php", {
         username: username,
         email: email,
         password: password,
