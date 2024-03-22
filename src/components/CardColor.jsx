@@ -17,7 +17,7 @@ function CardColor(props) {
         if (id_utente_display === "/") {
             console.log("Utente non loggato, non può mettere like!");
         } else {
-            axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/addLike.php", {
+            axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/addLike.php",  {
                 id_palette: id_palette,
                 id_utente: id_utente_display,
             })
