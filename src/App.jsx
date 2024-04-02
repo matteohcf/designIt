@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Palette from "./pages/Palette";
@@ -12,8 +12,9 @@ import Dashboardd from "./pages/Dashboardd";
 export default function App() {
   return (
     <div>
+      <MyNavbar />
       <Routes>
-          <Route path="/" element={<Layout />}>
+        <Route path="" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="palette" element={<Palette />} />
           <Route path="about" element={<About />} />
@@ -23,16 +24,11 @@ export default function App() {
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
+      {/* <Footer /> */}
     </div>
   );
 }
 
 function Layout() {
-  return (
-    <div>
-      <MyNavbar />
-      {/* <Footer /> */}
-      <Outlet />
-    </div>
-  );
+  return <Outlet />;
 }
