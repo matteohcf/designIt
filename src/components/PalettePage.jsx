@@ -24,7 +24,7 @@ function PalettePage() {
     // Effettua la richiesta delle palette dal DB
     useEffect(() => {
         setLoading(true); // Imposta lo stato di caricamento su true
-        axios.get('http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/getPalette.php')
+        axios.get('http://195.231.81.82/paletteIT/paletteAPI/getPalette.php')
             .then(response => {
                 setCards(response.data);
                 /* console.log(response.data); */
@@ -41,7 +41,7 @@ function PalettePage() {
             if (!loggedIn) {
 
             }
-            axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/getLikedPalette.php", {
+            axios.post("http://195.231.81.82/paletteIT/paletteAPI/getLikedPalette.php", {
                     id_utente: id_utente_display,
                 })
                 .then((response) => {

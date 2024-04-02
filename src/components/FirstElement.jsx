@@ -19,7 +19,7 @@ function FirstElement () {
     // Effettua la richiesta delle palette dal DB
 useEffect(() => {
     setLoading(true); // Imposta lo stato di caricamento su true
-    axios.get('http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/getPalette.php')
+    axios.get('http://195.231.81.82/paletteIT/paletteAPI/getPalette.php')
         .then(response => {
             // Seleziona casualmente 10 elementi dall'array response.data
             const randomCards = response.data.sort(() => 0.5 - Math.random()).slice(0, 10);

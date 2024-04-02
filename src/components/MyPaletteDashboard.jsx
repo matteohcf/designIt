@@ -27,7 +27,7 @@ function MyPaletteDashboard() {
 
     useEffect(() => {
         setLoading(true);
-        axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/getPaletteDashboard.php", {
+        axios.post("http://195.231.81.82/paletteIT/paletteAPI/getPaletteDashboard.php", {
                 creating_user_id: creating_user_id.id_utente,
             })
             .then((response) => {
@@ -47,7 +47,7 @@ function MyPaletteDashboard() {
 
     const handleDeletePalette = () => {
         if (deletingPaletteId) {
-            axios.delete(`http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/deletePalette.php?id=${deletingPaletteId}`)
+            axios.delete(`http://195.231.81.82/paletteIT/paletteAPI/deletePalette.php?id=${deletingPaletteId}`)
               .then(response => {
                 // Rimuovi la palette dallo stato locale
                 setCards(prevCards => prevCards.filter(card => card.id_palette !== deletingPaletteId));

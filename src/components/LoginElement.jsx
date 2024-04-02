@@ -60,7 +60,7 @@ function Login() {
     }
     event.preventDefault();
     axios
-      .post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/login.php", {
+      .post("http://195.231.81.82/paletteIT/paletteAPI/login.php", {
         email: email,
         password: password,
       })

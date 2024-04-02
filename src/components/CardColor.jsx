@@ -17,7 +17,7 @@ function CardColor(props) {
         if (id_utente_display === "/") {
             console.log("Utente non loggato, non può mettere like!");
         } else {
-            axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/addLike.php",  {
+            axios.post("http://195.231.81.82/paletteIT/paletteAPI/addLike.php",  {
                 id_palette: id_palette,
                 id_utente: id_utente_display,
             })
@@ -41,7 +41,7 @@ function CardColor(props) {
     };
     
     useEffect(() => {
-        axios.post("http://ec2-16-16-251-126.eu-north-1.compute.amazonaws.com/getLikedPalette.php", {
+        axios.post("http://195.231.81.82/paletteIT/paletteAPI/getLikedPalette.php", {
             id_utente: id_utente_display,
         })
         .then((response) => {
