@@ -23,8 +23,8 @@ function InfiniteScroll () {
 
     return (
         <>
-            <div class="scroller" data-speed="fast">
-                <ul class="tag-list scroller__inner">
+            <div className="scroller" data-speed="fast">
+                <ul className="tag-list scroller__inner">
                     <li><BsFillPaletteFill className="BsFillPaletteFill" color="#F7EEDD" size={70} /></li>
                     <li><BsFillPaletteFill className="BsFillPaletteFill" color="#C0C2C8" size={70} /></li>
                     <li><BsFillPaletteFill className="BsFillPaletteFill" color="#9EAAB2" size={70} /></li>

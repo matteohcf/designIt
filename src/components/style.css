@@ -8,14 +8,14 @@
 }
 
 body {
-    background-color: rgb(34, 37, 41)!important;
+    background: rgb(34, 37, 41);
     /* background-image: linear-gradient(
       to bottom right,
       #403F44, #1E1B32
     )!important; */
-    /* margin: 0; */
-    padding: 0;
-    min-height: 100vh; /* Per allungare il body a tutta la pagina */
+    margin: 0;
+    /* padding: 0; */
+    /* min-height: 100vh; */ /* Per allungare il body a tutta la pagina */
   }
 
 @font-face {
@@ -433,6 +433,10 @@ li:hover {
 
 /* Responsive Zone */
 @media screen and (max-width: 800px) {
+    html {
+        background: rgb(34, 37, 41);
+    }
+
     .titolo_principale {
         font-size: 52px;
     }
