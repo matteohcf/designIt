@@ -16,7 +16,7 @@ function Footer () {
                     <div className="col-md-3 mb-md-0 mb-3">
                         <h5 className="text-uppercase">Links</h5>
                         <ul className="list-unstyled">
-                            <li><a href="http://matteocarrara.it">Sito web personale</a></li>
+                            {/* <li><a href="http://matteocarrara.it">Sito web personale</a></li> */}
                             {/* <li><a href="#!">Link 2</a></li>
                             <li><a href="#!">Link 3</a></li>
                             <li><a href="#!">Link 4</a></li> */}
@@ -26,7 +26,7 @@ function Footer () {
                     <div className="col-md-3 mb-md-0 mb-3">
                         <h5 className="text-uppercase">informazioni</h5>
                         <ul className="list-unstyled">
-                            <li><a href="/about">About</a></li>
+                            {/* <li><a href="/about">About</a></li> */}
                             {/* <li><a href="#!">Link 2</a></li>
                             <li><a href="#!">Link 3</a></li>
                             <li><a href="#!">Link 4</a></li> */}
@@ -36,7 +36,7 @@ function Footer () {
             </div>
 
             <div className="footer-copyright text-center py-3">© 2024 Copyright:
-                <a href="http://matteocarrara.it"> matteocarrara.it</a>
+                {/* <a href="http://matteocarrara.it"> matteocarrara.it</a> */}
             </div>
         </footer>
     );

@@ -412,6 +412,10 @@ li:hover {
     letter-spacing: 0.5px;
 }
 
+.informazioni_sotto {
+    margin-top: 3rem!important;
+}
+
 .sottotitolo_contatti {
     color: rgba(228, 228, 255, 0.8);
     font-family: "Roboto-Regular";
@@ -425,4 +429,157 @@ li:hover {
     font-size: 14px;
     line-height: 170%;
     letter-spacing: 0.7px;
+}
+
+/* Responsive Zone */
+@media screen and (max-width: 800px) {
+    .titolo_principale {
+        font-size: 52px;
+    }
+
+    .titolo_principale_sottotitolo_div {
+        max-width: 100%;
+    }
+
+    .titolo_principale_sottotitolo {
+        font-size: 32px;
+    }
+
+    .sottotitolo_principale_home {
+        font-size: 19px;
+    }
+
+    .card-colors{
+        width: 160px;
+    }
+    
+    .div-color{
+        height: 40px;
+    }
+    
+    .span_text {
+        font-size: 12px;
+    }
+    
+    .first_span_text {
+        font-size: 12px;
+    }
+    
+    .palettes {
+        margin-top: 0rem!important;
+    }
+
+    .cointainer_principale { /* TODO */
+        margin-top: 1rem!important;
+        /* margin-bottom: 10rem; */
+    }
+
+    .cointainer_principale_about {
+        margin-top: 0rem!important;
+    }
+
+    .titolo_contatti {
+        font-size: 32px;
+    }
+
+    .sottotitolo_contatti {
+        font-size: 16px;
+    }
+
+    /* .card-colors-home {
+        width: 240px;
+    }
+
+    .div-color-home {
+        height: 60px;
+    }
+
+    .span_text_home {
+        font-size: 15px;
+    }
+    
+    .first_span_text_home {
+        font-size: 15px;
+    } */
+
+    .swiper_class {
+        margin-left: 0.5rem!important;
+    }
+
+    /* Hover */
+    .bi-heart-fill:hover {
+        transform: none;
+    }
+    
+    .bottone-cuore:hover {
+        transform: none;
+    }
+    
+    .bottone_elimina_palette:hover {
+        transform: none;
+    }
+    
+    .bi-palette-fill:hover {
+        transform: none;
+    }
+    
+    
+    .bi-person-circle:hover {
+        transform: none;
+    }
+    
+    .nav-link:hover {
+        transform: none;
+        color: white!important;
+    }
+    
+    .bottone_pubblica:hover {
+        transform: none;
+    }
+    
+    .bi-arrow-down-circle-fill:hover {
+        cursor: pointer;
+        transform: none;
+    }
+    
+    li:hover {
+        transform: none;
+        border: 1px solid  #eceff11c;
+    }
+    /* Fine hover */
+    .tag-list li {
+        padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+        background-color: transparent;
+        border-radius: 1.2rem;    
+    }
+
+    .titolo_principale_dashboard {
+        line-height: 90%;
+        margin-bottom: 1.5rem;
+    }
+
+    .palette_pubblicate {
+        line-height: 90%;
+        font-size: 32px;
+        margin-bottom: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .bottone_elimina_palette {
+        /* margin-top: 0.5rem; */
+        margin-right: 4rem;
+        /* padding: 0.15rem 0.3rem; */
+        /* font-size: 0.75rem; */
+        /* line-height: 1.5; */
+    }
+
+    .logo_account {
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    .logout_button {
+        margin-top: 1rem;
+    }
+    
 }

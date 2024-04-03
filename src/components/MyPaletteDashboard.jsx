@@ -61,14 +61,14 @@ function MyPaletteDashboard() {
     };
 
     const handleLoadMore = () => {
-        setVisibleCards(prevVisibleCards => prevVisibleCards + 8);
+        setVisibleCards(prevVisibleCards => prevVisibleCards + 12);
     };
 
     return (
         <>
             <Row>
                 {cards.slice(0, visibleCards).map((colors, index) => (
-                    <Col lg={3} md={6} xs={12} key={index}>
+                    <Col lg={3} md={6} xs={6} key={index}>
                         <CardColor colors={colors} />
                         <Button className='bottone_elimina_palette float-start' variant="danger" size='sm' onClick={() => handleShowModal(colors.id_palette)}>Elimina</Button>
                         {/* <span style={{ color: 'white' }}>ID: {colors.id_palette}</span> */}

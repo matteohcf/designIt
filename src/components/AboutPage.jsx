@@ -6,7 +6,7 @@ import ContactUs from './ContactUs';
 function AboutPage () {
     return (
         <>
-            <Container className="mt-5">
+            <Container className="mt-5 cointainer_principale">
             <div className="titolo_principale">
                 <span className='titolo_principale_background'>About us</span>
             </div>

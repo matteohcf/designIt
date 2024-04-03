@@ -1,7 +1,7 @@
 /* import './FirstElement.css'; */
 import { Container } from 'react-bootstrap';
 import { useEffect } from 'react';
-import CardColor from './CardColor';
+/* import CardColor from './CardColor'; */
 import axios from "axios";
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,6 +10,7 @@ import './style.css';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
+import CardColorHomePage from './CardColorHomePage';
 
 function FirstElement () {
     
@@ -46,13 +47,15 @@ useEffect(() => {
                 <span className='sottotitolo_principale_home'>Esplora e crea palette di colori uniche per i tuoi progetti di design su un sito web interattivo!</span>
             </div>
             <Swiper className='swiper_class'
-                spaceBetween={0}
-                slidesPerView={4}
+                /* spaceBetween={0} */
+                spaceBetween={window.innerWidth > 768 ? 30 : 10} /* Responsive */
+                slidesPerView={window.innerWidth > 768 ? 4 : 2} /* Responsive */
+                /* slidesPerView={4} */
                 loop={true} // Opzionale: abilita il looping delle slide
                 /* onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)} */
             >
-            {cards.map((colors, index)=>  <SwiperSlide key={index}> <CardColor colors={colors}  /> </SwiperSlide> )} 
+            {cards.map((colors, index)=>  <SwiperSlide key={index}> <CardColorHomePage colors={colors}  /> </SwiperSlide> )} 
             </Swiper>
         </Container>
         </>

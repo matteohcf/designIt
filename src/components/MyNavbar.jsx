@@ -36,22 +36,18 @@ function MyNavbar() {
         </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {window.innerWidth > 800 ? (
+        <>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link> <Link to="/">Home</Link> </Nav.Link>
-            <Nav.Link> <Link to="/palette">Palette</Link> </Nav.Link>
-            <Nav.Link> <Link to="/about">About</Link> </Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link> 
+            <Nav.Link as={Link} to="/palette">Palette</Nav.Link> 
+            <Nav.Link as={Link} to="/about">About</Nav.Link> 
           </Nav>
         </Navbar.Collapse>
-        {/* <Link className='float-end' to="/login">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-            <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-            </svg>
-        </Link> */}
         <OverlayTrigger
-        placement="bottom"
-        overlay={<Tooltip id="tooltip-bottom">Username: <strong>{username_display}</strong> </Tooltip>}
+          placement="bottom"
+          overlay={<Tooltip id="tooltip-bottom">Username: <strong>{username_display}</strong> </Tooltip>}
         >
           <Link className='float-end' to="/login">
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -61,6 +57,23 @@ function MyNavbar() {
           </Link>
         </OverlayTrigger>
         {loggedIn? (<> <div className='float-end'> <LogoutButton/></div> </>) : (<></>)}
+        </>
+        ) : (
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link> <Link to="/">Home</Link> </Nav.Link>
+            <Nav.Link> <Link to="/palette">Palette</Link> </Nav.Link>
+            <Nav.Link> <Link to="/about">About</Link> </Nav.Link>
+          </Nav>
+          <Link className='logo_account' to="/login">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+              <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+              </svg>
+          </Link>
+          {loggedIn? (<> <div className='logout_button'> <LogoutButton/></div> </>) : (<></>)}
+        </Navbar.Collapse>
+      )}
       </Container>
     </Navbar>
     );

@@ -11,7 +11,7 @@ function DashboardPage() {
     return (
         <>
         <Container className="mt-5">
-            <div className="titolo_principale">
+            <div className="titolo_principale titolo_principale_dashboard">
                 Benvenuto <span className="titolo_principale_background">{username.username}</span>
             </div>
             <div className='sottotitolo_principale_home_div_palette'>

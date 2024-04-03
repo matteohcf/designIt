@@ -1,13 +1,13 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import CardColor from './CardColor';
 import './style.css';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 function PalettePage() {
     const [cards, setCards] = useState([]);
-    const [visibleCards, setVisibleCards] = useState(12); // Numero iniziale di palette da visualizzare
+    const [visibleCards, setVisibleCards] = useState(20); // Numero iniziale di palette da visualizzare
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const loggedIn = useSelector((state) => state.LoggedIn.value); /* Per controllare se è loggato */
@@ -59,7 +59,7 @@ function PalettePage() {
 
     // Gestore dell'evento per il pulsante "Load More"
     const handleLoadMore = () => {
-        setVisibleCards(prevVisibleCards => prevVisibleCards + 8); // Aggiunge 4 alle palette da visualizzare
+        setVisibleCards(prevVisibleCards => prevVisibleCards + 20); // Aggiunge 20 alle palette da visualizzare
     };
 
     return (
@@ -74,18 +74,15 @@ function PalettePage() {
                 <div className='sottotitolo_principale_home_div_palette'>
                     <span className='sottotitolo_principale_home'>Scropri le palette caricate dagli utenti!</span>
                 </div>
-                <Row className='mt-3'>
+                <Row className='mt-3 palettes'>
                     {cards.slice(0, visibleCards).map((colors, index) => (
-                        <Col lg={3} md={6} xs={12} key={index}>
+                        <Col lg={3} md={6} xs={6} key={index}>
                             <CardColor colors={colors} />
                         </Col>
                     ))}
                 </Row>
                 {visibleCards < cards.length && ( // Mostra il pulsante "Load More" solo se ci sono altre palette da visualizzare
                     <div className="mt-5">
-                        {/* <Button variant="light" onClick={handleLoadMore} disabled={loading}>
-                            {loading ? 'Caricamento...' : 'Altro'}
-                        </Button> */}
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" onClick={handleLoadMore} width="50" height="50" fill="white" className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
