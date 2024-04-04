@@ -64,7 +64,7 @@ function Register() {
     }
     event.preventDefault();
     axios
-      .post("http://195.231.81.82/paletteIT/paletteAPI/register.php", {
+      .post("https://matteocarrara.it/api/paletteAPI/register.php", {
         username: username,
         email: email,
         password: password,

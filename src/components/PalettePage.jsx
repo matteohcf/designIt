@@ -24,7 +24,7 @@ function PalettePage() {
     // Effettua la richiesta delle palette dal DB
     useEffect(() => {
         setLoading(true); // Imposta lo stato di caricamento su true
-        axios.get('http://195.231.81.82/paletteIT/paletteAPI/getPalette.php')
+        axios.get('https://matteocarrara.it/api/paletteAPI/getPalette.php')
             .then(response => {
                 setCards(response.data);
                 /* console.log(response.data); */
@@ -41,7 +41,7 @@ function PalettePage() {
             if (!loggedIn) {
 
             }
-            axios.post("http://195.231.81.82/paletteIT/paletteAPI/getLikedPalette.php", {
+            axios.post("https://matteocarrara.it/api/paletteAPI/getLikedPalette.php", {
                     id_utente: id_utente_display,
                 })
                 .then((response) => {

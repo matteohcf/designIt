@@ -17,7 +17,7 @@ function CardColor(props) {
         if (id_utente_display === "/") {
             console.log("Utente non loggato, non può mettere like!");
         } else {
-            axios.post("http://195.231.81.82/paletteIT/paletteAPI/addLike.php",  {
+            axios.post("https://matteocarrara.it/api/paletteAPI/addLike.php",  {
                 id_palette: id_palette,
                 id_utente: id_utente_display,
             })
@@ -41,7 +41,7 @@ function CardColor(props) {
     };
     
     useEffect(() => {
-        axios.post("http://195.231.81.82/paletteIT/paletteAPI/getLikedPalette.php", {
+        axios.post("https://matteocarrara.it/api/paletteAPI/getLikedPalette.php", {
             id_utente: id_utente_display,
         })
         .then((response) => {
