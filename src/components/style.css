@@ -431,6 +431,99 @@ li:hover {
     letter-spacing: 0.7px;
 }
 
+/* Bottone homepage */
+.custom-btn {
+    width: 180px;
+    height: 50px;
+    color: #fff;
+    border-radius: 1px;
+    padding: 10px 25px;
+    font-size: larger;
+    font-weight: 600;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     
+    outline: none;
+  }
+  /* 8 */
+.btn-8 {
+    background-color: #f0ecfc;
+  background-image: linear-gradient(90deg, rgba(132,87,238,1) 21%, rgba(246,204,207,1) 76%);
+    line-height: 50px;
+    padding: 0;
+    border: none;
+  }
+  .btn-8 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .btn-8:before,
+  .btn-8:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  .btn-8:before{
+     height: 0%;
+     width: 2px;
+  }
+  .btn-8:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-8:hover:before {
+    height: 100%;
+  }
+  .btn-8:hover:after {
+    width: 100%;
+  }
+  .btn-8:hover{
+    background: transparent;
+  }
+  .btn-8 span:hover{
+    color: #c797eb;
+  }
+  .btn-8 span:before,
+  .btn-8 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #c797eb;
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  .btn-8 span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn-8 span:after {
+    height: 2px;
+    width: 0%;
+  }
+  .btn-8 span:hover:before {
+    height: 100%;
+  }
+  .btn-8 span:hover:after {
+    width: 100%;
+  }
+
+/* -------------------------------------------------------- */
 /* Responsive Zone */
 @media screen and (max-width: 800px) {
     html {
@@ -570,20 +663,22 @@ li:hover {
     }
 
     .bottone_elimina_palette {
-        /* margin-top: 0.5rem; */
         margin-right: 4rem;
-        /* padding: 0.15rem 0.3rem; */
-        /* font-size: 0.75rem; */
-        /* line-height: 1.5; */
     }
 
-    .logo_account {
-        display: inline-block;
-        margin-top: 0.5rem;
+    .custom-btn {
+        margin-top: 2rem!important;
+        width: 150px;
+        height: 40px;
+        font-size: medium;
+        font-weight: 700;
     }
-
-    .logout_button {
-        margin-top: 1rem;
-    }
+    .btn-8 {
+        background-color: #f0ecfc;
+      background-image: linear-gradient(90deg, rgba(132,87,238,1) 21%, rgba(246,204,207,1) 76%);
+        line-height: 40px;
+        padding: 0;
+        border: none;
+      }
     
 }

@@ -1,6 +1,7 @@
 /* import './FirstElement.css'; */
 import { Container } from 'react-bootstrap';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 /* import CardColor from './CardColor'; */
 import axios from "axios";
 import React, { useState } from 'react';
@@ -48,15 +49,16 @@ useEffect(() => {
             </div>
             <Swiper className='swiper_class'
                 /* spaceBetween={0} */
-                spaceBetween={window.innerWidth > 768 ? 30 : 10} /* Responsive */
-                slidesPerView={window.innerWidth > 768 ? 4 : 2} /* Responsive */
+                spaceBetween={window.innerWidth > 800 ? 30 : 10} /* Responsive */
+                slidesPerView={window.innerWidth > 800 ? 4 : 2} /* Responsive */
                 /* slidesPerView={4} */
-                loop={true} // Opzionale: abilita il looping delle slide
+                /* loop={true} */ // Opzionale: abilita il looping delle slide
                 /* onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)} */
             >
             {cards.map((colors, index)=>  <SwiperSlide key={index}> <CardColorHomePage colors={colors}  /> </SwiperSlide> )} 
             </Swiper>
+            <button class="mt-5 custom-btn btn-8"><Link to="/palette"><span>Scopri le palette</span></Link></button>
         </Container>
         </>
     );

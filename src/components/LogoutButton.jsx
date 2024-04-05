@@ -22,7 +22,7 @@ function LogoutButton() {
 
     return (
         <>
-            <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
+        <Button variant="outline-light" size='sm' onClick={handleLogout}>Logout</Button>
         </>
     );
 }
