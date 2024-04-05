@@ -412,10 +412,6 @@ li:hover {
     letter-spacing: 0.5px;
 }
 
-.informazioni_sotto {
-    margin-top: 3rem!important;
-}
-
 .sottotitolo_contatti {
     color: rgba(228, 228, 255, 0.8);
     font-family: "Roboto-Regular";
@@ -581,6 +577,10 @@ li:hover {
 
     .sottotitolo_contatti {
         font-size: 16px;
+    }
+
+    .informazioni_sotto {
+        margin-top: 3rem!important;
     }
 
     /* .card-colors-home {

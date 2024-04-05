@@ -72,7 +72,7 @@ function PalettePage() {
                     <span className='titolo_principale_sottotitolo'>Next Generation Palette Tool</span>
                 </div> */}
                 <div className='sottotitolo_principale_home_div_palette'>
-                    <span className='sottotitolo_principale_home'>Scropri le palette caricate dagli utenti!</span>
+                    <span className='sottotitolo_principale_home'>Scopri le palette caricate dagli utenti!</span>
                 </div>
                 <Row className='mt-3 palettes'>
                     {cards.slice(0, visibleCards).map((colors, index) => (

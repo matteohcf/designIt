@@ -45,7 +45,7 @@ useEffect(() => {
                 <span className='titolo_principale_sottotitolo'>Next Generation Palette Tool</span>
             </div>
             <div className='sottotitolo_principale_home_div'>
-                <span className='sottotitolo_principale_home'>Esplora e crea palette di colori uniche per i tuoi progetti di design su un sito web interattivo!</span>
+                <span className='sottotitolo_principale_home'>Esplora e crea palette di colori unici per i tuoi progetti di design su un sito web interattivo!</span>
             </div>
             <Swiper className='swiper_class'
                 /* spaceBetween={0} */
