@@ -58,7 +58,7 @@ useEffect(() => {
             >
             {cards.map((colors, index)=>  <SwiperSlide key={index}> <CardColorHomePage colors={colors}  /> </SwiperSlide> )} 
             </Swiper>
-            <button class="mt-5 custom-btn btn-8"><Link to="/palette"><span>Scopri le palette</span></Link></button>
+            <button className="mt-5 custom-btn btn-8"><Link to="/palette"><span>Scopri le palette</span></Link></button>
         </Container>
         </>
     );

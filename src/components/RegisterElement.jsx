@@ -118,7 +118,7 @@ function Register() {
             value={username}
             onChange={handleUsernameChange}
             variant="filled"
-            id="filled-basic"
+            id="filled-basic1"
             label="Username"
             fullWidth
             style={{ marginBottom: "20px" }}
@@ -129,7 +129,7 @@ function Register() {
             value={email}
             onChange={handleEmailChange}
             variant="filled"
-            id="filled-basic"
+            id="filled-basic2"
             label="Email"
             fullWidth
             style={{ marginBottom: "20px" }}
@@ -141,7 +141,7 @@ function Register() {
               value={password}
               onChange={handlePasswordChange}
               variant="filled"
-              id="filled-basic"
+              id="filled-basic3"
               label="Password"
               fullWidth
               style={{ marginBottom: "10px" }}

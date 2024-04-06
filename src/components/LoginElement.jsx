@@ -10,8 +10,8 @@ import IconButton from "@mui/material/IconButton";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
-import { login, logout } from '../features/Auth/LoggedIn'
+import { useSelector, useDispatch } from 'react-redux';
+import { login, logout } from '../features/Auth/LoggedIn';
 import ReCAPTCHA from "react-google-recaptcha";
 /* import './LoginElement.css'; */
 import './style.css';
@@ -28,6 +28,7 @@ function Login() {
   const loggedIn = useSelector((state) => state.LoggedIn.value);
   const dispatch = useDispatch();
 
+  /* Se è già loggato vai alla dahsboard */
   useEffect(() => {
     const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
     if (isLoggedIn) {
