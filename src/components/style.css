@@ -134,7 +134,6 @@ body {
 }
 
 .sottotitolo_principale_home {
-    /* TODO COLOR */
     color: rgba(228, 228, 255, 0.8);
     font-family: "Roboto-Regular";
     font-size: 23px;
@@ -145,7 +144,6 @@ body {
     width: 50%;
 }
  
-/* TODO */
 .bottone_elimina_palette {
     margin-top: 0.5rem;
     margin-right: 7rem;
@@ -211,7 +209,6 @@ input {
 }
 
 .custom-navbar  {
-    /* background-color: var(--black_scuro); */
     background-color: var(--viola);
     color: white;
 }
@@ -668,6 +665,7 @@ li:hover {
 
     .custom-btn {
         margin-top: 2rem!important;
+        border-radius: 7px;
         width: 150px;
         height: 40px;
         font-size: medium;
@@ -675,10 +673,33 @@ li:hover {
     }
     .btn-8 {
         background-color: #f0ecfc;
-      background-image: linear-gradient(90deg, rgba(132,87,238,1) 21%, rgba(246,204,207,1) 76%);
+        background-image: linear-gradient(90deg, rgba(132,87,238,1) 21%, rgba(246,204,207,1) 76%);
         line-height: 40px;
         padding: 0;
         border: none;
-      }
-    
+    }
+    .btn-8:hover{
+        background-color: #f0ecfc;
+        background-image: linear-gradient(90deg, rgba(132,87,238,1) 21%, rgba(246,204,207,1) 76%);
+    }
+    .btn-8 span:hover{
+        color: white;
+    }
+    .btn-8:before{
+        height: 0%;
+        width: 0;
+    }
+    .btn-8:after {
+       width: 0%;
+       height: 0;
+    }
+    .btn-8 span:before {
+        width: 0;
+        height: 0%;
+    }
+    .btn-8 span:after {
+    height: 0;
+    width: 0%;
+    }
+      
 }
