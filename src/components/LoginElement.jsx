@@ -66,7 +66,7 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        console.log(response);
+        /* console.log(response); */
         if (response.data.status === "success") {
           sessionStorage.setItem("loggedIn", true);
           sessionStorage.setItem(

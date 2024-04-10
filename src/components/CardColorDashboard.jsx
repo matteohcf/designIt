@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import axios from "axios";
 import './style.css';
 
-function CardColor(props) {
+function CardColorDashboard(props) {
     const [likes, setLikes] = useState(props.colors.likes);
     const [error, setError] = useState(null);
     const [likedPalette, setLikedPalette] = useState([]);
     const [savedPalette, setSavedPalette] = useState([]);
     const [fill, setFill] = useState("white");
     const [fillSave, setFillSave] = useState("white");
+    const [showModal, setShowModal] = useState(false); /* Modal */
+    const [deletingPaletteId, setDeletingPaletteId] = useState(null); /* ID della palette da eliminare */
 
     // Ottieni l'ID utente dal sessionStorage
     const id_utente_display = sessionStorage.getItem("userData") ? JSON.parse(sessionStorage.getItem("userData")).id_utente : "/";
+
+    const handleShowModal = (id) => {
+        setDeletingPaletteId(id);
+        setShowModal(true);
+    };
+    
+    const handleCloseModal = () => {
+        setDeletingPaletteId(null);
+        setShowModal(false);
+    };
 
     /* Like alla palette */
     const handleLikeClick = () => {
@@ -55,6 +68,7 @@ function CardColor(props) {
                 id_utente: id_utente_display,
             })
             .then((response) => {
+                /* console.log(response.data); */
                 if (response.data.isSaved) {
                     //setLikes(newLikes);
                     setFillSave("yellow");
@@ -96,6 +110,7 @@ function CardColor(props) {
             id_utente: id_utente_display,
         })
         .then((response) => {
+            /* console.log(response.data.saved_palettes); */
             setSavedPalette(response.data.saved_palettes);
         })
         .catch((error) => {
@@ -108,10 +123,31 @@ function CardColor(props) {
         // Verifica se l'ID della palette è presente in savedPalette e imposta il colore del cuore di conseguenza
         setFillSave(Array.isArray(savedPalette) && savedPalette.includes(props.colors.id_palette) ? "yellow" : "white");
     }, [savedPalette, props.colors.id_palette]);
+
+    /* Delete palette */
+    const handleDeletePalette = () => {
+        if (deletingPaletteId) {
+            axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?id=${deletingPaletteId}`)
+              .then(response => {
+                // Rimuovi la palette dallo stato locale
+                /* setCards(prevCards => prevCards.filter(card => card.id_palette !== deletingPaletteId)); */
+                handleCloseModal(); // Chiudi il modal dopo l'eliminazione
+              })
+              .catch(error => {
+                console.error('Errore durante l\'eliminazione della palette:', error);
+                // Gestisci l'errore
+              });
+        }
+    };
   
     return (
         <>
             <div className="card-colors">
+                <div className="bottone-delete position-absolute top-0 end-0" onClick={() => handleShowModal(props.colors.id_palette)}>  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" className="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                    </svg>
+                </div>
                 <div className="div-color first" style={{ backgroundColor: props.colors.color1 }}> <span className='first_span_text'> {props.colors.color1} </span> </div>
                 <div className="div-color" style={{ backgroundColor: props.colors.color2 }}> <span className='span_text'> {props.colors.color2} </span> </div>
                 <div className="div-color" style={{ backgroundColor: props.colors.color3 }}> <span className='span_text'> {props.colors.color3} </span> </div>
@@ -132,8 +168,26 @@ function CardColor(props) {
                 </div>
                 {error && <p>{error}</p>}
             </div>
+
+            {/* Modal di conferma per eliminazione palette */}
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Conferma eliminazione</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Sei sicuro di voler eliminare questa palette?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleCloseModal}>
+                        Annulla
+                    </Button>
+                    <Button variant="success" onClick={handleDeletePalette}>
+                        Conferma
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }
 
-export default CardColor;
+export default CardColorDashboard;

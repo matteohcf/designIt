@@ -70,7 +70,7 @@ function Register() {
         password: password,
       })
       .then((response) => {
-        console.log(response);
+        /* console.log(response); */
         setApiResponse(response.data.message);
       })
       .catch((error) => {

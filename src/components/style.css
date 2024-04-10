@@ -64,6 +64,28 @@ body {
     align-items: center;
     transition: transform 0.2s ease;
 }
+
+.bottone-delete {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.259);
+    border-radius: 0 7px 0 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+.bottone-delete:hover {
+    transform: scale(1.05);
+}
+
+.bi-x-lg {
+    transition: transform 0.2s ease;
+}
+
+.bi-x-lg:hover {
+    transform: scale(1.2);
+}
   
 .bottone-cuore:hover {
     transform: scale(1.1); 
@@ -161,18 +183,6 @@ body {
     width: 50%;
 }
  
-.bottone_elimina_palette {
-    margin-top: 0.5rem;
-    margin-right: 7rem;
-    padding: 0.15rem 0.3rem; /* Personalizza il padding per rendere il pulsante più piccolo */
-    font-size: 0.75rem; /* Riduci la dimensione del testo */
-    line-height: 1.5;
-}
-
-.bottone_elimina_palette:hover {
-    transform: scale(1.04);
-}
-
  /* Footer */
  .page-footer {
     color: white;
@@ -261,6 +271,7 @@ input {
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
+    position: relative;
 }
 
 /* TODO */
@@ -636,8 +647,12 @@ li:hover {
     .bottone-save:hover {
         transform: none; 
     }
+
+    .bottone-delete:hover {
+        transform: none;
+    }
     
-    .bottone_elimina_palette:hover {
+    .bi-x-lg:hover {
         transform: none;
     }
     
@@ -685,10 +700,6 @@ li:hover {
         font-size: 32px;
         margin-bottom: 1.5rem;
         margin-top: 3rem;
-    }
-
-    .bottone_elimina_palette {
-        margin-right: 4rem;
     }
 
     .custom-btn {

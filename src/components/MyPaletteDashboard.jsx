@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Button, Modal } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import CardColor from './CardColor';
 import './style.css';
+import CardColorDashboard from './CardColorDashboard';
 
 function MyPaletteDashboard() {
     const [cards, setCards] = useState([]);
     const [visibleCards, setVisibleCards] = useState(12);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [deletingPaletteId, setDeletingPaletteId] = useState(null); // ID della palette da eliminare
     const creating_user_id = JSON.parse(sessionStorage.getItem("userData"));
-
-    // Modal
-    const [showModal, setShowModal] = useState(false);
-
-    const handleShowModal = (id) => {
-        setDeletingPaletteId(id);
-        setShowModal(true);
-    };
-    
-    const handleCloseModal = () => {
-        setDeletingPaletteId(null);
-        setShowModal(false);
-    };
 
     useEffect(() => {
         setLoading(true);
@@ -32,6 +18,7 @@ function MyPaletteDashboard() {
             })
             .then((response) => {
                 if (Array.isArray(response.data)) {
+                    /* console.log(response.data); */
                     setCards(response.data);
                 } else {
                     setError("Dati non validi dal backend.");
@@ -45,21 +32,6 @@ function MyPaletteDashboard() {
             });
     }, []);
 
-    const handleDeletePalette = () => {
-        if (deletingPaletteId) {
-            axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?id=${deletingPaletteId}`)
-              .then(response => {
-                // Rimuovi la palette dallo stato locale
-                setCards(prevCards => prevCards.filter(card => card.id_palette !== deletingPaletteId));
-                handleCloseModal(); // Chiudi il modal dopo l'eliminazione
-              })
-              .catch(error => {
-                console.error('Errore durante l\'eliminazione della palette:', error);
-                // Gestisci l'errore
-              });
-        }
-    };
-
     const handleLoadMore = () => {
         setVisibleCards(prevVisibleCards => prevVisibleCards + 12);
     };
@@ -69,9 +41,7 @@ function MyPaletteDashboard() {
             <Row>
                 {cards.slice(0, visibleCards).map((colors, index) => (
                     <Col lg={3} md={6} xs={6} key={index}>
-                        <CardColor colors={colors} />
-                        <Button className='bottone_elimina_palette float-start' variant="danger" size='sm' onClick={() => handleShowModal(colors.id_palette)}>Elimina</Button>
-                        {/* <span style={{ color: 'white' }}>ID: {colors.id_palette}</span> */}
+                        <CardColorDashboard colors={colors} />
                     </Col>
                 ))}
             </Row>
@@ -84,24 +54,6 @@ function MyPaletteDashboard() {
                     </div>
                 </div>
             )}
-
-            {/* Modal di conferma per eliminazione palette */}
-            <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Conferma eliminazione</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Sei sicuro di voler eliminare questa palette?
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="danger" onClick={handleCloseModal}>
-                        Annulla
-                    </Button>
-                    <Button variant="success" onClick={handleDeletePalette}>
-                        Conferma
-                    </Button>
-                </Modal.Footer>
-            </Modal>
         </>
     );
 }
