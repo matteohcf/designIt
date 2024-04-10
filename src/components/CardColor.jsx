@@ -5,8 +5,6 @@ import './style.css';
 function CardColor(props) {
     const [likes, setLikes] = useState(props.colors.likes);
     const [error, setError] = useState(null);
-    const [likedPalette, setLikedPalette] = useState([]);
-    const [savedPalette, setSavedPalette] = useState([]);
     const [fill, setFill] = useState("white");
     const [fillSave, setFillSave] = useState("white");
 
@@ -26,7 +24,6 @@ function CardColor(props) {
             })
             .then((response) => {
                 const newLikes = response.data.likes;
-                /* console.log(response.data); */
                 if (response.data.isLiked) {
                     setLikes(newLikes);
                     setFill("red");
@@ -68,44 +65,16 @@ function CardColor(props) {
             });
         }
     };
-    
-    /* Ottieni le palette a cui l'utente ha messo like */
-    useEffect(() => {
-        axios.post("https://matteocarrara.it/api/paletteAPI/getLikedPalette.php", {
-            id_utente: id_utente_display,
-        })
-        .then((response) => {
-            setLikedPalette(response.data.liked_palettes);
-        })
-        .catch((error) => {
-            console.error(error);
-            setError("Errore nell'aggiornamento dei like.");
-        });
-    }, [id_utente_display]);
 
+    /* Set palette liked */
     useEffect(() => {
-        // Verifica se l'ID della palette è presente in likedPalette e imposta il colore del cuore di conseguenza
-        setFill(Array.isArray(likedPalette) && likedPalette.includes(props.colors.id_palette) ? "red" : "white");
-    }, [likedPalette, props.colors.id_palette]);
+        setFill(props.colors.isLiked ? "red" : "white");
+    }, [props.colors.isLiked]);
 
-    /* Ottieni le palette che l'utente ha salvato */
+    /* Set palette saved */
     useEffect(() => {
-        axios.post("https://matteocarrara.it/api/paletteAPI/getSavedPalette.php", {
-            id_utente: id_utente_display,
-        })
-        .then((response) => {
-            setSavedPalette(response.data.saved_palettes);
-        })
-        .catch((error) => {
-            console.error(error);
-            setError("Errore nell'aggiornamento dei save.");
-        });
-    }, [id_utente_display]);
-
-    useEffect(() => {
-        // Verifica se l'ID della palette è presente in savedPalette e imposta il colore del cuore di conseguenza
-        setFillSave(Array.isArray(savedPalette) && savedPalette.includes(props.colors.id_palette) ? "yellow" : "white");
-    }, [savedPalette, props.colors.id_palette]);
+        setFillSave(props.colors.isSaved ? "yellow" : "white");
+    }, [props.colors.isSaved]);
   
     return (
         <>
@@ -121,7 +90,6 @@ function CardColor(props) {
                         <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                     </svg> { }
                     <span className='numero-like'>{likes}</span>
-                    {/* <span>{props.colors.id_palette}</span> */}
                 </div>
                 <div className="bottone-save" onClick={handleSavePalette}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={fillSave} className="bi bi-bookmark-fill" viewBox="0 0 16 16">

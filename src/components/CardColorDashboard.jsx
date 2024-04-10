@@ -70,11 +70,9 @@ function CardColorDashboard(props) {
             .then((response) => {
                 /* console.log(response.data); */
                 if (response.data.isSaved) {
-                    //setLikes(newLikes);
                     setFillSave("yellow");
                 } else {
                     setFillSave("white");
-                    //setLikes(newLikes);
                 }
                 setError(null);
             })
@@ -85,44 +83,15 @@ function CardColorDashboard(props) {
         }
     };
     
-    /* Ottieni le palette a cui l'utente ha messo like */
+    /* Set palette liked */
     useEffect(() => {
-        axios.post("https://matteocarrara.it/api/paletteAPI/getLikedPalette.php", {
-            id_utente: id_utente_display,
-        })
-        .then((response) => {
-            setLikedPalette(response.data.liked_palettes);
-        })
-        .catch((error) => {
-            console.error(error);
-            setError("Errore nell'aggiornamento dei like.");
-        });
-    }, [id_utente_display]);
+        setFill(props.colors.isLiked ? "red" : "white");
+    }, [props.colors.isLiked]);
 
+    /* Set palette saved */
     useEffect(() => {
-        // Verifica se l'ID della palette è presente in likedPalette e imposta il colore del cuore di conseguenza
-        setFill(Array.isArray(likedPalette) && likedPalette.includes(props.colors.id_palette) ? "red" : "white");
-    }, [likedPalette, props.colors.id_palette]);
-
-    /* Ottieni le palette che l'utente ha salvato */
-    useEffect(() => {
-        axios.post("https://matteocarrara.it/api/paletteAPI/getSavedPalette.php", {
-            id_utente: id_utente_display,
-        })
-        .then((response) => {
-            /* console.log(response.data.saved_palettes); */
-            setSavedPalette(response.data.saved_palettes);
-        })
-        .catch((error) => {
-            console.error(error);
-            setError("Errore nell'aggiornamento dei save.");
-        });
-    }, [id_utente_display]);
-
-    useEffect(() => {
-        // Verifica se l'ID della palette è presente in savedPalette e imposta il colore del cuore di conseguenza
-        setFillSave(Array.isArray(savedPalette) && savedPalette.includes(props.colors.id_palette) ? "yellow" : "white");
-    }, [savedPalette, props.colors.id_palette]);
+        setFillSave(props.colors.isSaved ? "yellow" : "white");
+    }, [props.colors.isSaved]);
 
     /* Delete palette */
     const handleDeletePalette = () => {
@@ -130,12 +99,10 @@ function CardColorDashboard(props) {
             axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?id=${deletingPaletteId}`)
               .then(response => {
                 // Rimuovi la palette dallo stato locale
-                /* setCards(prevCards => prevCards.filter(card => card.id_palette !== deletingPaletteId)); */
-                handleCloseModal(); // Chiudi il modal dopo l'eliminazione
+                handleCloseModal();
               })
               .catch(error => {
                 console.error('Errore durante l\'eliminazione della palette:', error);
-                // Gestisci l'errore
               });
         }
     };

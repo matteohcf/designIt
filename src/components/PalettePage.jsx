@@ -12,17 +12,25 @@ function PalettePage() {
     const [error, setError] = useState(null);
     const loggedIn = useSelector((state) => state.LoggedIn.value);
 
+    // Ottieni l'ID utente dal sessionStorage
+    const id_utente_display = sessionStorage.getItem("userData") ? JSON.parse(sessionStorage.getItem("userData")).id_utente : "/";
+
+
     useEffect(() => {
         setLoading(true);
-        axios.get('https://matteocarrara.it/api/paletteAPI/getPalette.php')
-            .then(response => {
-                setCards(response.data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('Errore nella richiesta al database:', error);
-                setLoading(false);
-            });
+        /* console.log(id_utente_display); */
+        axios.post('https://matteocarrara.it/api/paletteAPI/getPalette.php', {
+            creating_user_id: id_utente_display,
+        })
+        .then(response => {
+            /* console.log(response.data); */
+            setCards(response.data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error('Errore nella richiesta al database:', error);
+            setLoading(false);
+        });
     }, []);
 
     const handleLoadMore = () => {
@@ -34,7 +42,7 @@ function PalettePage() {
             <Row className='mt-3 palettes'>
                 {cards.slice(0, visibleCards).map((colors, index) => (
                     <Col lg={3} md={6} xs={6} key={index}>
-                        <CardColor colors={colors} loggedIn={loggedIn} />
+                        <CardColor colors={colors} loggedIn={loggedIn}/>
                     </Col>
                 ))}
             </Row>
