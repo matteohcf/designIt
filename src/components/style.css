@@ -452,6 +452,11 @@ li:hover {
     letter-spacing: 0.7px;
 }
 
+.link_portfolio {
+    color: white!important;
+    text-decoration: none;
+}
+
 /* Bottone homepage */
 .custom-btn {
     width: 180px;
