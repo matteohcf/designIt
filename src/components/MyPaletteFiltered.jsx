@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import './style.css';
-import CardColorDashboard from './CardColorDashboard';
+import CardColor from './CardColor';
 
-function MyPaletteDashboard() {
+function MyPaletteFiltered() {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ function MyPaletteDashboard() {
 
     useEffect(() => {
         setLoading(true);
-        axios.post("https://matteocarrara.it/api/paletteAPI/getPaletteDashboard.php", {
+        axios.post("https://matteocarrara.it/api/paletteAPI/getPaletteFiltered.php", {
                 creating_user_id: creating_user_id.id_utente,
             })
             .then((response) => {
@@ -36,7 +36,7 @@ function MyPaletteDashboard() {
             <Row>
                 {cards.slice(0).map((colors, index) => (
                     <Col lg={3} md={6} xs={6} key={index}>
-                        <CardColorDashboard colors={colors} />
+                        <CardColor colors={colors} />
                     </Col>
                 ))}
             </Row>
@@ -44,4 +44,4 @@ function MyPaletteDashboard() {
     );
 }
 
-export default MyPaletteDashboard;
+export default MyPaletteFiltered;

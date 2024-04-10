@@ -56,11 +56,9 @@ function CardColor(props) {
             })
             .then((response) => {
                 if (response.data.isSaved) {
-                    //setLikes(newLikes);
                     setFillSave("yellow");
                 } else {
                     setFillSave("white");
-                    //setLikes(newLikes);
                 }
                 setError(null);
             })
