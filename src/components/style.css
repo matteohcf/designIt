@@ -80,7 +80,24 @@ body {
 .numero-like {
     font-family: "Roboto-Medium";
     color: white;
-    vertical-align: middle;
+    /* vertical-align: middle; */
+}
+
+.bottoni {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+}
+
+.bottone-save {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    justify-self: flex-end;
+}
+
+.bottone-save:hover {
+    transform: scale(1.15); 
 }
 
 /* DashboardPage & FirstElement */
@@ -542,6 +559,13 @@ li:hover {
     .card-colors{
         width: 160px;
     }
+
+    .bottoni {
+        /* display: flex;
+        justify-content: space-between;
+        align-items: center; */
+        width: 160px;
+    }
     
     .div-color{
         height: 40px;
@@ -607,6 +631,10 @@ li:hover {
     
     .bottone-cuore:hover {
         transform: none;
+    }
+
+    .bottone-save:hover {
+        transform: none; 
     }
     
     .bottone_elimina_palette:hover {
