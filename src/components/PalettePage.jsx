@@ -39,6 +39,15 @@ function PalettePage() {
 
     return (
         <Container className="mt-5 cointainer_principale">
+             <div className="titolo_principale">
+                    <span className='titolo_principale_background'>Palette:</span>
+                </div>
+                {/* <div className='titolo_principale_sottotitolo_div'>
+                    <span className='titolo_principale_sottotitolo'>Next Generation Palette Tool</span>
+                </div> */}
+                <div className='sottotitolo_principale_home_div_palette'>
+                    <span className='sottotitolo_principale_home'>Scopri le palette caricate dagli utenti!</span>
+                </div>
             <Row className='mt-3 palettes'>
                 {cards.slice(0, visibleCards).map((colors, index) => (
                     <Col lg={3} md={6} xs={6} key={index}>

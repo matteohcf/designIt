@@ -223,6 +223,11 @@ input {
 }
 
 /* MyNavbar */
+.active {
+    color: rgba(228, 228, 255, 0.8) !important;
+    text-decoration: underline!important;
+}
+
 .bi-palette-fill:hover {
     transform: rotate(-4deg) scale(1.1);
 }
