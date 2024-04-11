@@ -227,6 +227,56 @@ input {
     color: white;
 }
 
+.oauthButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /* margin: 50px auto 0 auto; */
+    padding: auto 15px 15px auto;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: rgba(18, 18, 18, 0.193);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+    transition: all 250ms;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.oauthButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: rgba(18, 18, 18, 0.96);
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.348);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+}
+
+/* .oauthButton:hover {
+    color: #e8e8e8;
+} */
+
+.oauthButton:hover::before {
+    width: 100%;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 /* MyNavbar */
 .active {
     color: rgba(228, 228, 255, 0.8) !important;
@@ -574,10 +624,6 @@ li:hover {
 /* -------------------------------------------------------- */
 /* Responsive Zone */
 @media screen and (max-width: 800px) {
-    html {
-        background: rgb(34, 37, 41);
-    }
-
     .titolo_principale {
         font-size: 52px;
     }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
@@ -10,6 +10,8 @@ import IconButton from "@mui/material/IconButton";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from 'react-router-dom';
+import AuthGoogleElement from "./AuthGoogleElement";
 import './style.css';
 
 function Register() {
@@ -20,6 +22,7 @@ function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [recaptchaValue, setRecaptchaValue] = useState(""); /* Recapcha */
+  const navigate = useNavigate();
   const generatePassword = () => {
     const length = 12;
     const charset =
@@ -30,6 +33,14 @@ function Register() {
     }
     return password;
   };
+
+  /* Se è già loggato vai alla dahsboard */
+  useEffect(() => {
+    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+    if (isLoggedIn) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   const handleGeneratePassword = () => {
     setPassword(generatePassword());
@@ -58,11 +69,12 @@ function Register() {
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     if (!recaptchaValue) { /* Rechapta errore Obbligatorio */
       setError("Captcha obbligatorio");
       return;
     }
-    event.preventDefault();
+    /* event.preventDefault(); */
     axios
       .post("https://matteocarrara.it/api/paletteAPI/register.php", {
         username: username,
@@ -85,7 +97,7 @@ function Register() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "5%",
+        marginTop: "1%",
       }}
     >
       <Container className="register_container cointainer_principale" maxWidth="sm">
@@ -156,29 +168,27 @@ function Register() {
             />
             <Button
               size="small"
-              style={{ marginBottom: "25px" }}
+              style={{ marginBottom: "9px" }}
               color="secondary"
               onClick={handleGeneratePassword}
             >
               Genera password
             </Button>
           </div>
-          <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
-            Register
-          </Button>
+          <div>
+            <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
+              Register
+            </Button>
+          </div>
+          <div className="mt-3">
+            <AuthGoogleElement/>
+          </div>
           <Typography
             variant="body1"
             gutterBottom
-            style={{ marginTop: "20px" }}
+            className="mt-3"
           >
             Hai già un account? <Link to="/login">< strong>Login</strong> </Link>
-          </Typography>
-          <Typography
-            variant="body1"
-            gutterBottom
-            style={{ marginTop: "20px" }}
-          >
-          <Link to="/authgoogle">Oppure entra con <strong>Google</strong> </Link>
           </Typography>
           {/* Recapta */}
           <ReCAPTCHA className="mt-3"

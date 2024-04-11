@@ -1,7 +1,4 @@
-import Container from "@mui/material/Container";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
 import { signInWithPopup, getAuth, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import axios from "axios";
@@ -9,87 +6,64 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/Auth/LoggedIn';
 
-function AuthGoogle() {
+function AuthGoogleElement() {
+  const auth = getAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const auth = getAuth();
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
-    /* Variabile redux store */
-    const loggedIn = useSelector((state) => state.LoggedIn.value);
-    const dispatch = useDispatch();
-
-    /* Se è già loggato vai alla dahsboard */
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
-    if (isLoggedIn) {
-      navigate("/dashboard");
-    }
+      const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+      if (isLoggedIn) {
+          navigate("/dashboard");
+      }
   }, []);
 
-    const handleGoogleLogin = () => {
-        const provider = new GoogleAuthProvider(); /* Crea un provider di autenticazione Google */
-        signInWithPopup(auth, provider) /* Avvia il processo di autenticazione con Google */
-            .then((result) => {
-                const user = result.user;
-                /* console.log("User:", user); */
-                /* user.email = "ciaoddddd@gmail.com";
-                user.displayName = "cidda"; */
-                /* console.log(user.email);
-                console.log(user.displayName); */
-                axios
-                .post("https://matteocarrara.it/api/paletteAPI/authGoogle.php", {
+  const handleGoogleLogin = (event) => {
+      event.preventDefault(); // Impedisce il comportamento predefinito del form
+      const provider = new GoogleAuthProvider();
+      signInWithPopup(auth, provider)
+          .then((result) => {
+              const user = result.user;
+              axios.post("https://matteocarrara.it/api/paletteAPI/authGoogle.php", {
                   token: user.accessToken,
                   google: true,
                   email: user.email,
                   username: user.displayName,
-                })
-                .then((response) => {
-                  /* console.log(response); */
-                  if (response.data.status === "success") {
-                    /* console.log(response.data); */
-                    sessionStorage.setItem("loggedIn", true);
-                    sessionStorage.setItem(
-                        "userData",
-                        JSON.stringify(response.data.data)
-                    );
-                    dispatch(login());  /* Mette la variabile del metodo logina  true */
-                    /* console.log(loggedIn); */
-                    navigate("/dashboard");
-                    /* console.log(response.data.data); */
-                  } else {
-                    setError(response.data);
-                  }
-                })
-                .catch((error) => {
-                  console.error(error);
-                });
-            // Ora puoi aggiungere logica aggiuntiva, ad esempio salvare l'utente nel tuo database
-            })
-            .catch((error) => {
-            // Gestisci gli errori di autenticazione con Google
-            setError(error.message);
-            });
-        };
+              })
+                  .then((response) => {
+                      if (response.data.status === "success") {
+                          sessionStorage.setItem("loggedIn", true);
+                          sessionStorage.setItem("userData", JSON.stringify(response.data.data));
+                          dispatch(login());  // Mette la variabile loggedIn a true utilizzando redux
+                          navigate("/dashboard");
+                      } else {
+                          setError(response.data);
+                      }
+                  })
+                  .catch((error) => {
+                      console.error(error);
+                  });
+          })
+          .catch((error) => {
+              setError(error.message);
+          });
+  };
 
-    return (
-        <>
-        <Container className="mt-5" maxWidth="sm">
-            <div className="titolo_principale">
-                <span className='titolo_principale_background'>Accedi</span>:
-            </div>
-            <div className="titolo_principale_sottotitolo_div_google">
-                <span className="titolo_principale_sottotitolo">
-                    Effettua l'accesso con Google
-                </span>
-            </div>
-            <div className="mt-3">
-                <Button variant="contained" size="large" color="secondary" onClick={handleGoogleLogin}>
-                    Accedi
-                </Button>
-            </div>
-        </Container>
-        </>
-    );
+  return (
+      <>  
+      <button className="oauthButton" onClick={handleGoogleLogin}>
+        <svg className="icon" viewBox="0 0 24 24">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+        <path d="M1 1h22v22H1z" fill="none"></path>
+        </svg>
+        Continua con Google
+      </button>
+      </>
+  );
 }
 
-export default AuthGoogle;
+export default AuthGoogleElement;

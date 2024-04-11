@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/Auth/LoggedIn';
 import ReCAPTCHA from "react-google-recaptcha";
+import AuthGoogleElement from "./AuthGoogleElement";
 /* import './LoginElement.css'; */
 import './style.css';
 
@@ -91,7 +92,7 @@ function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "5%",
+        marginTop: "4%",
       }}
     >
       <Container className="login_container cointainer_principale" maxWidth="sm">
@@ -140,22 +141,20 @@ function Login() {
               ),
             }}
           />
-          <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
-            Login
-          </Button>
+          <div>
+            <Button variant="contained" /* type="submit" */ onClick={handleSubmit} size="large" color="secondary">
+              Login
+            </Button>
+          </div>
+          <div className="mt-3">
+            <AuthGoogleElement/>
+          </div>
           <Typography
             variant="body1"
             gutterBottom
-            style={{ marginTop: "20px" }}
+            className="mt-3"
           >
             Non hai un account? <Link to="/register"> <strong>Register</strong> </Link>
-          </Typography>
-          <Typography
-            variant="body1"
-            gutterBottom
-            style={{ marginTop: "20px" }}
-          >
-          <Link to="/authgoogle">Oppure entra con <strong>Google</strong> </Link>
           </Typography>
           {/* Recapta */}
           <ReCAPTCHA className="mt-3"
