@@ -303,6 +303,12 @@ input {
     font-size: 14px;
     letter-spacing: 1px;
     padding: 3px;
+    transition: transform 0.2s ease;
+}
+
+.span_text:hover {
+    background-color: rgba(0, 0, 0, 0.309);
+    transform: scale(1.03);
 }
 
 .first_span_text {
@@ -314,6 +320,12 @@ input {
     font-size: 14px;
     letter-spacing: 1px;
     padding: 3px;
+    transition: transform 0.2s ease;
+}
+
+.first_span_text:hover {
+    background-color: rgba(0, 0, 0, 0.309);
+    transform: scale(1.03);
 }
 
 .modal-content {
@@ -590,9 +602,19 @@ li:hover {
     .span_text {
         font-size: 12px;
     }
+
+    .span_text:hover {
+        background-color: rgba(0, 0, 0, 0.259);
+        transform: none;
+    }
     
     .first_span_text {
         font-size: 12px;
+    }
+
+    .first_span_text:hover {
+        background-color: rgba(0, 0, 0, 0.259);
+        transform: none;
     }
     
     .palettes {

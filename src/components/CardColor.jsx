@@ -5,6 +5,12 @@ import './style.css';
 function CardColor(props) {
     const [likes, setLikes] = useState(props.colors.likes);
     const [error, setError] = useState(null);
+    const [copied, setCopied] = useState({
+        color1: false,
+        color2: false,
+        color3: false,
+        color4: false
+    });
     const [fill, setFill] = useState("white");
     const [fillSave, setFillSave] = useState("white");
 
@@ -75,20 +81,46 @@ function CardColor(props) {
     useEffect(() => {
         setFillSave(props.colors.isSaved ? "yellow" : "white");
     }, [props.colors.isSaved]);
+
+    /* Per copiare il codice palette */
+    const copyToClipboard = (color, colorName) => {
+        navigator.clipboard.writeText(color);
+        setCopied({ ...copied, [colorName]: true });
+        // Imposta il colore corrente come non copiato dopo 2 secondi solo se è stato precedentemente copiato
+        setTimeout(() => {
+            setCopied(prevCopied => ({ ...prevCopied, [colorName]: false }));
+        }, 2000);
+    };
   
     return (
         <>
             <div className="card-colors">
-                <div className="div-color first" style={{ backgroundColor: props.colors.color1 }}> <span className='first_span_text'> {props.colors.color1} </span> </div>
-                <div className="div-color" style={{ backgroundColor: props.colors.color2 }}> <span className='span_text'> {props.colors.color2} </span> </div>
-                <div className="div-color" style={{ backgroundColor: props.colors.color3 }}> <span className='span_text'> {props.colors.color3} </span> </div>
-                <div className="div-color last" style={{ backgroundColor: props.colors.color4 }}> <span className='span_text'> {props.colors.color4} </span> </div>
+                <div className="div-color first" style={{ backgroundColor: props.colors.color1 }}>
+                    <span className='first_span_text' onClick={() => copyToClipboard(props.colors.color1, "color1")}>
+                        {copied.color1 ? "Copiato!" : props.colors.color1}
+                    </span>
+                </div>
+                <div className="div-color" style={{ backgroundColor: props.colors.color2 }}>
+                    <span className='span_text' onClick={() => copyToClipboard(props.colors.color2, "color2")}>
+                        {copied.color2 ? "Copiato!" : props.colors.color2}
+                    </span>
+                </div>
+                <div className="div-color" style={{ backgroundColor: props.colors.color3 }}>
+                    <span className='span_text' onClick={() => copyToClipboard(props.colors.color3, "color3")}>
+                        {copied.color3 ? "Copiato!" : props.colors.color3}
+                    </span>
+                </div>
+                <div className="div-color last" style={{ backgroundColor: props.colors.color4 }}>
+                    <span className='span_text' onClick={() => copyToClipboard(props.colors.color4, "color4")}>
+                        {copied.color4 ? "Copiato!" : props.colors.color4}
+                    </span>
+                </div>
             </div>
             <div className="bottoni">
                 <div className='bottone-like bottone-cuore' onClick={handleLikeClick}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  fill={fill}  className="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={fill} className="bi bi-heart-fill" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
-                    </svg> { }
+                    </svg>
                     <span className='numero-like'>{likes}</span>
                 </div>
                 <div className="bottone-save" onClick={handleSavePalette}>
