@@ -173,6 +173,13 @@ function Register() {
           >
             Hai già un account? <Link to="/login">< strong>Login</strong> </Link>
           </Typography>
+          <Typography
+            variant="body1"
+            gutterBottom
+            style={{ marginTop: "20px" }}
+          >
+          <Link to="/authgoogle">Oppure entra con <strong>Google</strong> </Link>
+          </Typography>
           {/* Recapta */}
           <ReCAPTCHA className="mt-3"
             theme="dark"

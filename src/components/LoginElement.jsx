@@ -66,7 +66,7 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        /* console.log(response); */
+        /* console.log(response.data.data); */
         if (response.data.status === "success") {
           sessionStorage.setItem("loggedIn", true);
           sessionStorage.setItem(
@@ -149,6 +149,13 @@ function Login() {
             style={{ marginTop: "20px" }}
           >
             Non hai un account? <Link to="/register"> <strong>Register</strong> </Link>
+          </Typography>
+          <Typography
+            variant="body1"
+            gutterBottom
+            style={{ marginTop: "20px" }}
+          >
+          <Link to="/authgoogle">Oppure entra con <strong>Google</strong> </Link>
           </Typography>
           {/* Recapta */}
           <ReCAPTCHA className="mt-3"

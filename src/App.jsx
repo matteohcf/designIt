@@ -5,6 +5,7 @@ import Palette from "./pages/Palette";
 import NoMatch from "./pages/NoMatch";
 import MyNavbar from "./components/MyNavbar";
 import Footer from "./components/Footer";
+import AuthGoogle from "./pages/AuthGoogle";
 import Login from "./components/LoginElement";
 import Register from "./components/RegisterElement";
 import Dashboardd from "./pages/Dashboardd";
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="dashboard" element={<Dashboardd />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="authgoogle" element={<AuthGoogle />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
