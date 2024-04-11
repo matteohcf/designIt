@@ -772,5 +772,8 @@ li:hover {
     height: 0;
     width: 0%;
     }
+    .active {
+        color: white !important;;
+    }
       
 }
