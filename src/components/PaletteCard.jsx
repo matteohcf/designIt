@@ -48,7 +48,7 @@ function PaletteCard () {
         creating_user_id: id.id_utente,
       })
       .then((response) => {
-        console.log(response);
+        /* console.log(response); */
         setApiResponse(response.data.message);
         handleCloseModal();
       })

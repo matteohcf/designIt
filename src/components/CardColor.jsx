@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDoubleTap } from 'use-double-tap';
 import axios from "axios";
 import './style.css';
 
@@ -91,10 +92,16 @@ function CardColor(props) {
             setCopied(prevCopied => ({ ...prevCopied, [colorName]: false }));
         }, 2000);
     };
+
+    /* Double tap funzionante anche su mobile */
+    const doubleTap = useDoubleTap((event) => {
+        handleLikeClick();
+        /* console.log('Double tapped'); */
+      });
   
     return (
         <>
-            <div className="card-colors">
+            <div className="card-colors" {...doubleTap}>
                 <div className="div-color first" style={{ backgroundColor: props.colors.color1 }}>
                     <span className='first_span_text' onClick={() => copyToClipboard(props.colors.color1, "color1")}>
                         {copied.color1 ? "Copiato!" : props.colors.color1}

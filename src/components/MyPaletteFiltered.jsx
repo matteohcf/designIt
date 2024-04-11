@@ -17,7 +17,7 @@ function MyPaletteFiltered() {
             })
             .then((response) => {
                 if (Array.isArray(response.data)) {
-                    console.log(response.data);
+                    /* console.log(response.data); */
                     setCards(response.data);
                 } else {
                     setError("Dati non validi dal backend.");
