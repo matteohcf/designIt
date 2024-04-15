@@ -56,8 +56,8 @@ function FirstElement() {
         <Swiper
           className="swiper_class"
           /* spaceBetween={0} */
-          spaceBetween={window.innerWidth > 800 ? 30 : 10} /* Responsive */
-          slidesPerView={window.innerWidth > 800 ? 4 : 2} /* Responsive */
+          spaceBetween={window.innerWidth > 700 ? 30 : 10} /* Responsive */
+          slidesPerView={window.innerWidth > 700 ? 4 : 2} /* Responsive */
           /* slidesPerView={4} */
           /* loop={true} */ // Opzionale: abilita il looping delle slide
           /* onSlideChange={() => console.log('slide change')}

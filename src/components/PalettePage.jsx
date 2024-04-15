@@ -50,7 +50,7 @@ function PalettePage() {
                 </div>
             <Row className='mt-3 palettes'>
                 {cards.slice(0, visibleCards).map((colors, index) => (
-                    <Col lg={3} md={6} xs={6} key={index}>
+                    <Col lg={3} md={3} xs={6} key={index}>
                         <CardColor colors={colors} loggedIn={loggedIn}/>
                     </Col>
                 ))}

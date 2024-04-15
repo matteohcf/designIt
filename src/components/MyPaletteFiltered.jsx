@@ -35,7 +35,7 @@ function MyPaletteFiltered() {
         <>
             <Row>
                 {cards.slice(0).map((colors, index) => (
-                    <Col lg={3} md={6} xs={6} key={index}>
+                    <Col lg={3} md={3} xs={6} key={index}>
                         <CardColor colors={colors} />
                     </Col>
                 ))}
