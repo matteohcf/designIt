@@ -51,6 +51,7 @@ function PaletteCard () {
         /* console.log(response); */
         setApiResponse(response.data.message);
         handleCloseModal();
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);

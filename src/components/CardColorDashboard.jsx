@@ -100,6 +100,7 @@ function CardColorDashboard(props) {
               .then(response => {
                 /* console.log(response); */
                 handleCloseModal();
+                window.location.reload();
               })
               .catch(error => {
                 console.error('Errore durante l\'eliminazione della palette:', error);
