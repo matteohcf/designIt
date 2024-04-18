@@ -36,7 +36,7 @@ function Register() {
 
   /* Se è già loggato vai alla dahsboard */
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
     if (isLoggedIn) {
       navigate("/dashboard");
     }

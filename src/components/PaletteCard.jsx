@@ -6,7 +6,7 @@ import axios from "axios";
 import './style.css';
 
 function PaletteCard () {
-    const id = JSON.parse(sessionStorage.getItem("userData")); /* Per estrapolare le informazioni dell'utente */
+    const id = JSON.parse(localStorage.getItem("userData")); /* Per estrapolare le informazioni dell'utente */
     /* console.log(id.id_utente); */
 
     // Modal

@@ -12,8 +12,8 @@ function PalettePage() {
     const [error, setError] = useState(null);
     const loggedIn = useSelector((state) => state.LoggedIn.value);
 
-    // Ottieni l'ID utente dal sessionStorage
-    const id_utente_display = sessionStorage.getItem("userData") ? JSON.parse(sessionStorage.getItem("userData")).id_utente : "/";
+    // Ottieni l'ID utente dal localStorage
+    const id_utente_display = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id_utente : "/";
 
 
     useEffect(() => {

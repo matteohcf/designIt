@@ -13,8 +13,8 @@ function CardColorDashboard(props) {
     const [showModal, setShowModal] = useState(false); /* Modal */
     const [deletingPaletteId, setDeletingPaletteId] = useState(null); /* ID della palette da eliminare */
 
-    // Ottieni l'ID utente dal sessionStorage
-    const id_utente_display = sessionStorage.getItem("userData") ? JSON.parse(sessionStorage.getItem("userData")).id_utente : "/";
+    // Ottieni l'ID utente dal localStorage
+    const id_utente_display = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id_utente : "/";
 
     const handleShowModal = (id) => {
         setDeletingPaletteId(id);

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 function Dashboardd() {
     const navigate = useNavigate();
-    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
     useEffect(() => {
         // Se l'utente non è autenticato, reindirizza alla pagina di login

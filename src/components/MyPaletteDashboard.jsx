@@ -8,7 +8,7 @@ function MyPaletteDashboard() {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const creating_user_id = JSON.parse(sessionStorage.getItem("userData"));
+    const creating_user_id = JSON.parse(localStorage.getItem("userData"));
 
     useEffect(() => {
         setLoading(true);

@@ -12,14 +12,14 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 function MyNavbar() {
 
-    /* const isLoggedIn = sessionStorage.getItem("loggedIn") === "true"; */
+    /* const isLoggedIn = localStorage.getItem("loggedIn") === "true"; */
     /* Variabile redux store */
     const loggedIn = useSelector((state) => state.LoggedIn.value);
     const dispatch = useDispatch();
     let username_display = "/";
 
     if (loggedIn) {
-      const username = JSON.parse(sessionStorage.getItem("userData"));
+      const username = JSON.parse(localStorage.getItem("userData"));
       username_display = username.username;
     } else {
       username_display = "/";

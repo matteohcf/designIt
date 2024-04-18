@@ -6,7 +6,7 @@ import './style.css';
 import MyPaletteFiltered from "./MyPaletteFiltered";
 
 function DashboardPage() {
-    const username = JSON.parse(sessionStorage.getItem("userData")); /* Per estrapolare le informazioni dell'utente */
+    const username = JSON.parse(localStorage.getItem("userData")); /* Per estrapolare le informazioni dell'utente */
     /* console.log(username.username); */
 
     return (

@@ -13,7 +13,7 @@ function AuthGoogleElement() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+      const isLoggedIn = localStorage.getItem("loggedIn") === "true";
       if (isLoggedIn) {
           navigate("/dashboard");
       }
@@ -33,12 +33,12 @@ function AuthGoogleElement() {
               })
                   .then((response) => {
                       if (response.data.status === "success") {
-                          sessionStorage.setItem("loggedIn", true);
-                          sessionStorage.setItem("userData", JSON.stringify(response.data.data));
-                          dispatch(login());  // Mette la variabile loggedIn a true utilizzando redux
-                          navigate("/dashboard");
+                        localStorage.setItem("loggedIn", true);
+                        localStorage.setItem("userData", JSON.stringify(response.data.data));
+                        dispatch(login());  // Mette la variabile loggedIn a true utilizzando redux
+                        navigate("/dashboard");
                       } else {
-                          setError(response.data);
+                        setError(response.data);
                       }
                   })
                   .catch((error) => {

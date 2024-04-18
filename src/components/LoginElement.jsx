@@ -31,7 +31,7 @@ function Login() {
 
   /* Se è già loggato vai alla dahsboard */
   useEffect(() => {
-    const isLoggedIn = sessionStorage.getItem("loggedIn") === "true";
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true";
     if (isLoggedIn) {
       navigate("/dashboard");
     }
@@ -69,8 +69,8 @@ function Login() {
       .then((response) => {
         /* console.log(response.data.data); */
         if (response.data.status === "success") {
-          sessionStorage.setItem("loggedIn", true);
-          sessionStorage.setItem(
+          localStorage.setItem("loggedIn", true);
+          localStorage.setItem(
             "userData",
             JSON.stringify(response.data.data)
           );
