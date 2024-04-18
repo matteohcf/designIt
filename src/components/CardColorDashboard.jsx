@@ -95,10 +95,10 @@ function CardColorDashboard(props) {
 
     /* Delete palette */
     const handleDeletePalette = () => {
-        if (deletingPaletteId) {
-            axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?id=${deletingPaletteId}`)
+        if (deletingPaletteId && id_utente_display) {
+            axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`)
               .then(response => {
-                // Rimuovi la palette dallo stato locale
+                /* console.log(response); */
                 handleCloseModal();
               })
               .catch(error => {
