@@ -12,7 +12,7 @@ function MyPaletteFiltered() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://matteocarrara.it/api/paletteAPI/getPaletteFiltered.php?creating_user_id=${creating_user_id.id_utente}`)
+        axios.get(`https://palette.matteocarrara.it/api/getPaletteFiltered.php?creating_user_id=${creating_user_id.id_utente}`)
             .then((response) => {
                 if (Array.isArray(response.data)) {
                     /* console.log(response.data); */

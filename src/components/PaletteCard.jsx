@@ -40,7 +40,7 @@ function PaletteCard () {
     /* Creazione palette in DB */
      const creaPalette = ()=> {
         axios
-      .post("https://matteocarrara.it/api/paletteAPI/creaPalette.php", {
+      .post("https://palette.matteocarrara.it/api/creaPalette.php", {
         color1: color1,
         color2: color2,
         color3: color3,

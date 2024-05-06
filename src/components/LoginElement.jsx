@@ -62,7 +62,7 @@ function Login() {
     }
     event.preventDefault();
     axios
-      .post("https://matteocarrara.it/api/paletteAPI/login.php", {
+      .post("https://palette.matteocarrara.it/api/login.php", {
         email: email,
         password: password,
       })

@@ -33,7 +33,7 @@ function CardColorDashboard(props) {
         if (id_utente_display === "/") {
             console.log("Utente non loggato, non può mettere like!");
         } else {
-            axios.post("https://matteocarrara.it/api/paletteAPI/addLike.php",  {
+            axios.post("https://palette.matteocarrara.it/api/addLike.php",  {
                 id_palette: id_palette,
                 id_utente: id_utente_display,
             })
@@ -63,7 +63,7 @@ function CardColorDashboard(props) {
         if (id_utente_display === "/") {
             console.log("Utente non loggato, non può salvare la palette!");
         } else {
-            axios.post("https://matteocarrara.it/api/paletteAPI/savePalette.php",  {
+            axios.post("https://palette.matteocarrara.it/api/savePalette.php",  {
                 id_palette: id_palette,
                 id_utente: id_utente_display,
             })
@@ -96,7 +96,7 @@ function CardColorDashboard(props) {
     /* Delete palette */
     const handleDeletePalette = () => {
         if (deletingPaletteId && id_utente_display) {
-            axios.delete(`https://matteocarrara.it/api/paletteAPI/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`)
+            axios.delete(`https://palette.matteocarrara.it/api/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`)
               .then(response => {
                 /* console.log(response); */
                 handleCloseModal();

@@ -25,7 +25,7 @@ function AuthGoogleElement() {
       signInWithPopup(auth, provider)
           .then((result) => {
               const user = result.user;
-              axios.post("https://matteocarrara.it/api/paletteAPI/authGoogle.php", {
+              axios.post("https://palette.matteocarrara.it/api/authGoogle.php", {
                   token: user.accessToken,
                   google: true,
                   email: user.email,
