@@ -62,12 +62,12 @@ function Login() {
     }
     event.preventDefault();
     axios
-      .post("http://localhost:8888/Programmazione%20Web/paletteAPI/login.php", {
+      .post("https://palette.matteocarrara.it/api/login.php", {
         email: email,
         password: password,
       })
       .then((response) => {
-        console.log(response);
+        /* console.log(response); */
         if (response.data.status === "success") {
           localStorage.setItem("loggedIn", true);
           localStorage.setItem("id_utente", response.data.id_utente);

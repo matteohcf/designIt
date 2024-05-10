@@ -1,6 +1,8 @@
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-/* import './PaletteCard.css'; */
+import { useDispatch } from "react-redux";
+import { logout } from "../features/Auth/LoggedIn";
+import { useNavigate } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import "./style.css";
@@ -10,8 +12,10 @@ function PaletteCard() {
     localStorage.getItem(
       "id_utente"
     ); /* Per estrapolare le informazioni dell'utente */
-    const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   /* console.log(id.id_utente); */
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Modal
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +49,7 @@ function PaletteCard() {
   const creaPalette = () => {
     axios
       .post(
-        "http://localhost:8888/Programmazione%20Web/paletteAPI/creaPalette.php",
+        "https://palette.matteocarrara.it/api/creaPalette.php",
         {
           color1: color1,
           color2: color2,
@@ -66,8 +70,15 @@ function PaletteCard() {
         window.location.reload();
       })
       .catch((error) => {
-        console.error(error);
-        setApiResponse(error.response);
+        if (error.response && error.response.status === 401) {
+            console.log("Errore 401: Accesso non autorizzato o token scaduto");
+            setApiResponse("Errore 401: Accesso non autorizzato o token scaduto");
+            dispatch(logout());
+            navigate('/login');
+          } else {
+            console.error(error);
+            setApiResponse("Errore nell'aggiornamento dei like.");
+          }
       });
   };
 

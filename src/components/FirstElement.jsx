@@ -20,7 +20,7 @@ function FirstElement() {
   useEffect(() => {
     setLoading(true); // Imposta lo stato di caricamento su true
     axios
-      .get("http://localhost:8888/Programmazione%20Web/paletteAPI/getPalette.php")
+      .get("https://palette.matteocarrara.it/api/getPalette.php")
       .then((response) => {
         // Seleziona casualmente 10 elementi dall'array response.data
         const randomCards = response.data

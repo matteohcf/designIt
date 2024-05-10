@@ -10,7 +10,13 @@ export const LoggedIn = createSlice({
       state.value = true
     },
     logout: (state) => {
-      state.value = false
+      state.value = false;
+      localStorage.removeItem('loggedIn');
+      localStorage.removeItem('id_utente');
+      localStorage.removeItem('email');
+      localStorage.removeItem('username');
+      localStorage.removeItem('auth');
+      localStorage.removeItem('token');
     },
   },
 })

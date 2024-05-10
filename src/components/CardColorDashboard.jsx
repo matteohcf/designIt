@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/Auth/LoggedIn";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import "./style.css";
 
 function CardColorDashboard(props) {
   const [likes, setLikes] = useState(props.colors.likes);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [likedPalette, setLikedPalette] = useState([]);
   const [savedPalette, setSavedPalette] = useState([]);
@@ -39,7 +44,7 @@ function CardColorDashboard(props) {
     } else {
       axios
         .post(
-          "http://localhost:8888/Programmazione%20Web/paletteAPI/addLike.php",
+          "https://palette.matteocarrara.it/api/addLike.php",
           {
             id_palette: id_palette,
             id_utente: id_utente_display,
@@ -63,8 +68,15 @@ function CardColorDashboard(props) {
           setError(null);
         })
         .catch((error) => {
-          console.error(error);
-          setError("Errore nell'aggiornamento dei like.");
+          if (error.response && error.response.status === 401) {
+            console.log("Errore 401: Accesso non autorizzato o token scaduto");
+            setError("Errore 401: Accesso non autorizzato o token scaduto");
+            dispatch(logout());
+            navigate("/login");
+          } else {
+            console.error(error);
+            setError("Errore nell'aggiornamento dei like.");
+          }
         });
     }
   };
@@ -78,7 +90,7 @@ function CardColorDashboard(props) {
     } else {
       axios
         .post(
-          "http://localhost:8888/Programmazione%20Web/paletteAPI/savePalette.php",
+          "https://palette.matteocarrara.it/api/savePalette.php",
           {
             id_palette: id_palette,
             id_utente: id_utente_display,
@@ -99,8 +111,14 @@ function CardColorDashboard(props) {
           setError(null);
         })
         .catch((error) => {
-          console.error(error);
-          setError("Errore nell'aggiornamento dei like.");
+          if (error.response && error.response.status === 401) {
+            console.log("Errore 401: Accesso non autorizzato o token scaduto");
+            setError("Errore 401: Accesso non autorizzato o token scaduto");
+            dispatch(logout());
+          } else {
+            console.error(error);
+            setError("Errore nell'aggiornamento dei like.");
+          }
         });
     }
   };
@@ -120,7 +138,7 @@ function CardColorDashboard(props) {
     if (deletingPaletteId && id_utente_display) {
       axios
         .delete(
-          `http://localhost:8888/Programmazione%20Web/paletteAPI/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`,
+          `https://palette.matteocarrara.it/api/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Includi il token nell'header dell'autorizzazione
@@ -133,7 +151,15 @@ function CardColorDashboard(props) {
           window.location.reload();
         })
         .catch((error) => {
-          console.error("Errore durante l'eliminazione della palette:", error);
+          if (error.response && error.response.status === 401) {
+            console.log("Errore 401: Accesso non autorizzato o token scaduto");
+            setError("Errore 401: Accesso non autorizzato o token scaduto");
+            dispatch(logout());
+            navigate('/login');
+          } else {
+            console.error(error);
+            setError("Errore nell'aggiornamento dei like.");
+          }
         });
     }
   };
@@ -216,7 +242,7 @@ function CardColorDashboard(props) {
             <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2" />
           </svg>
         </div>
-        {error && <p>{error}</p>}
+        {/* {error && <p>{error}</p>} */}
       </div>
 
       {/* Modal di conferma per eliminazione palette */}

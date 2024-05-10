@@ -19,7 +19,7 @@ function PalettePage() {
     useEffect(() => {
         setLoading(true);
         /* console.log(id_utente_display); */
-        axios.post('http://localhost:8888/Programmazione%20Web/paletteAPI/getPalette.php', {
+        axios.post('https://palette.matteocarrara.it/api/getPalette.php', {
             creating_user_id: id_utente_display,
         })
         .then(response => {

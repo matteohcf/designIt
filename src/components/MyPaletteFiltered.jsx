@@ -12,7 +12,7 @@ function MyPaletteFiltered() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:8888/Programmazione%20Web/paletteAPI/getPaletteFiltered.php?creating_user_id=${creating_user_id}`)
+        axios.get(`https://palette.matteocarrara.it/api/getPaletteFiltered.php?creating_user_id=${creating_user_id}`)
             .then((response) => {
                 if (Array.isArray(response.data)) {
                     /* console.log(response.data); */
