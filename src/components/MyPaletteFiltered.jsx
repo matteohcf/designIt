@@ -8,11 +8,11 @@ function MyPaletteFiltered() {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const creating_user_id = JSON.parse(localStorage.getItem("userData"));
+    const creating_user_id = localStorage.getItem("id_utente");
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://palette.matteocarrara.it/api/getPaletteFiltered.php?creating_user_id=${creating_user_id.id_utente}`)
+        axios.get(`http://localhost:8888/Programmazione%20Web/paletteAPI/getPaletteFiltered.php?creating_user_id=${creating_user_id}`)
             .then((response) => {
                 if (Array.isArray(response.data)) {
                     /* console.log(response.data); */

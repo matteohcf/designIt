@@ -19,8 +19,8 @@ function MyNavbar() {
     let username_display = "/";
 
     if (loggedIn) {
-      const username = JSON.parse(localStorage.getItem("userData"));
-      username_display = username.username;
+      const username = localStorage.getItem("username");
+      username_display = username;
     } else {
       username_display = "/";
     }

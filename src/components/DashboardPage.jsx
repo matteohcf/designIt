@@ -6,14 +6,14 @@ import './style.css';
 import MyPaletteFiltered from "./MyPaletteFiltered";
 
 function DashboardPage() {
-    const username = JSON.parse(localStorage.getItem("userData")); /* Per estrapolare le informazioni dell'utente */
+    const username = localStorage.getItem("username"); /* Per estrapolare le informazioni dell'utente */
     /* console.log(username.username); */
 
     return (
         <>
         <Container className="mt-5">
             <div className="titolo_principale titolo_principale_dashboard">
-                Benvenuto <span className="titolo_principale_background">{username.username}</span>
+                Benvenuto <span className="titolo_principale_background">{username}</span>
             </div>
             <div className='sottotitolo_principale_home_div_palette'>
                 <span className="sottotitolo_principale_home">Benvenuto, questa è la dashboard del tuo account, qui puoi creare e pubblicare le palette di colori!</span>

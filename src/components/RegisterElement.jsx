@@ -76,7 +76,7 @@ function Register() {
     }
     /* event.preventDefault(); */
     axios
-      .post("https://palette.matteocarrara.it/api/register.php", {
+      .post("http://localhost:8888/Programmazione%20Web/paletteAPI/register.php", {
         username: username,
         email: email,
         password: password,

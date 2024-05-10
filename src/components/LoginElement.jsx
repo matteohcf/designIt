@@ -62,23 +62,29 @@ function Login() {
     }
     event.preventDefault();
     axios
-      .post("https://palette.matteocarrara.it/api/login.php", {
+      .post("http://localhost:8888/Programmazione%20Web/paletteAPI/login.php", {
         email: email,
         password: password,
       })
       .then((response) => {
-        /* console.log(response.data.data); */
+        console.log(response);
         if (response.data.status === "success") {
           localStorage.setItem("loggedIn", true);
-          localStorage.setItem(
+          localStorage.setItem("id_utente", response.data.id_utente);
+          localStorage.setItem("email", response.data.email);
+          localStorage.setItem("username", response.data.username);
+          localStorage.setItem("auth", response.data.auth);
+          localStorage.setItem("token", response.data.token);
+          /* localStorage.setItem(
             "userData",
-            JSON.stringify(response.data.data)
-          );
+            JSON.stringify(response.data)
+          ); */
+          
           dispatch(login());  /* Mette la variabile del metodo logina  true */
           /* console.log(loggedIn); */
           navigate("/dashboard");
         } else {
-          setError(response.data.message);
+          /* setError(response.data.message); */
         }
       })
       .catch((error) => {

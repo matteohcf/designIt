@@ -12,7 +12,12 @@ function LogoutButton() {
     const handleLogout = () => {
         // Rimuovi le informazioni di autenticazione (ad esempio, token, sessione, ecc.)
         localStorage.removeItem('loggedIn');
-        localStorage.removeItem('userData');
+        localStorage.removeItem('id_utente');
+        localStorage.removeItem('email');
+        localStorage.removeItem('username');
+        localStorage.removeItem('auth');
+        localStorage.removeItem('token');
+        /* localStorage.removeItem('userData'); */
 
         dispatch(logout()); /* mette la variabile logout a false */
 

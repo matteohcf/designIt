@@ -13,13 +13,13 @@ function PalettePage() {
     const loggedIn = useSelector((state) => state.LoggedIn.value);
 
     // Ottieni l'ID utente dal localStorage
-    const id_utente_display = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).id_utente : "/";
+    const id_utente_display = localStorage.getItem("id_utente") ? localStorage.getItem("id_utente") : "/";
 
 
     useEffect(() => {
         setLoading(true);
         /* console.log(id_utente_display); */
-        axios.post('https://palette.matteocarrara.it/api/getPalette.php', {
+        axios.post('http://localhost:8888/Programmazione%20Web/paletteAPI/getPalette.php', {
             creating_user_id: id_utente_display,
         })
         .then(response => {

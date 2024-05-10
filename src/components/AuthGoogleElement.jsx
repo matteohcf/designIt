@@ -25,17 +25,24 @@ function AuthGoogleElement() {
       signInWithPopup(auth, provider)
           .then((result) => {
               const user = result.user;
-              axios.post("https://palette.matteocarrara.it/api/authGoogle.php", {
+              axios.post("http://localhost:8888/Programmazione%20Web/paletteAPI/authGoogle.php", {
                   token: user.accessToken,
                   google: true,
                   email: user.email,
                   username: user.displayName,
               })
                   .then((response) => {
+                    console.log(response);
                       if (response.data.status === "success") {
+                        console.log(response.data);
                         localStorage.setItem("loggedIn", true);
-                        localStorage.setItem("userData", JSON.stringify(response.data.data));
-                        dispatch(login());  // Mette la variabile loggedIn a true utilizzando redux
+                        localStorage.setItem("id_utente", response.data.id_utente);
+                        localStorage.setItem("email", response.data.email);
+                        localStorage.setItem("username", response.data.username);
+                        localStorage.setItem("auth", response.data.auth);
+                        localStorage.setItem("token", response.data.token);
+                        console.log(response.data.token);
+                        dispatch(login()); 
                         navigate("/dashboard");
                       } else {
                         setError(response.data);
