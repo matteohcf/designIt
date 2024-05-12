@@ -498,6 +498,10 @@ li:hover {
 }
 
 /* About Contatti */
+.privacy-policy {
+    color: white!important;
+}
+
 .container_contatti {
     color: white;
 }

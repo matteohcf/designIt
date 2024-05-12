@@ -84,9 +84,11 @@ function Register() {
       .then((response) => {
         /* console.log(response); */
         setApiResponse(response.data.message);
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
+        if (response.data.status === "success") {
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
+        }
       })
       .catch((error) => {
         console.error(error);

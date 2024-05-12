@@ -84,7 +84,7 @@ function Login() {
           /* console.log(loggedIn); */
           navigate("/dashboard");
         } else {
-          /* setError(response.data.message); */
+          setError(response.data.message);
         }
       })
       .catch((error) => {

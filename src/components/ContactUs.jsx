@@ -1,4 +1,5 @@
 import { Row, Col } from 'react-bootstrap';
+import PrivacyPolicy from './PrivacyPolicy';
 
 function Contatti() {
     return (
@@ -13,10 +14,10 @@ function Contatti() {
             </Col>
             <Col lg={6} md={12} xs={12} className="mt-3 informazioni_sotto">
                 <span className="titolo_contatti titolo_principale_background">Informazioni</span>
-                <p className="sottotitolo_contatti">Di seguito puoi trovare le app scaricabili</p>
+                <p className="sottotitolo_contatti">Di seguito puoi trovare altre informazioni utili</p>
                 <div className='info_contatti'>
-                    <div><span className='titolo_principale_background' style={{ fontSize: '16px' }}> App IOS: </span> <span style={{ color: 'white' }}>Scarica l'app per IOS</span></div>
-                    <div><span className='titolo_principale_background' style={{ fontSize: '16px' }}> App Android: </span> <span style={{ color: 'white' }}>Scarica l'app per Android</span></div>
+                    <div><span className='titolo_principale_background' style={{ fontSize: '16px' }}> App: </span> <span style={{ color: 'white' }}>Non disponibile</span></div>
+                    <div><span className='titolo_principale_background' style={{ fontSize: '16px' }}> Privacy Policy: </span> <span style={{ color: 'white' }}><PrivacyPolicy></PrivacyPolicy></span></div>
                 </div>
             </Col>
         </Row>
