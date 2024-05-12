@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
 import "./style.css";
 
 // Import Swiper styles
@@ -55,9 +56,11 @@ function FirstElement() {
         </div>
         <Swiper
           className="swiper_class"
+          modules={[Autoplay]}
           /* spaceBetween={0} */
           spaceBetween={window.innerWidth > 700 ? 30 : 10} /* Responsive */
           slidesPerView={window.innerWidth > 700 ? 4 : 2} /* Responsive */
+          autoplay={true}
           /* slidesPerView={4} */
           /* loop={true} */ // Opzionale: abilita il looping delle slide
           /* onSlideChange={() => console.log('slide change')}
