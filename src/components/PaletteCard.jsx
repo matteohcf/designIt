@@ -55,7 +55,6 @@ function PaletteCard() {
           color2: color2,
           color3: color3,
           color4: color4,
-          creating_user_id: id,
         },
         {
           headers: {

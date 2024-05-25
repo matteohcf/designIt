@@ -42,7 +42,6 @@ function CardColor(props) {
           "https://palette.matteocarrara.it/api/addLike.php",
           {
             id_palette: id_palette,
-            id_utente: id_utente_display,
           },
           {
             headers: {
@@ -87,7 +86,6 @@ function CardColor(props) {
           "https://palette.matteocarrara.it/api/savePalette.php",
           {
             id_palette: id_palette,
-            id_utente: id_utente_display,
           },
           {
             headers: {

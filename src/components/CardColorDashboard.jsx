@@ -47,7 +47,6 @@ function CardColorDashboard(props) {
           "https://palette.matteocarrara.it/api/addLike.php",
           {
             id_palette: id_palette,
-            id_utente: id_utente_display,
           },
           {
             headers: {
@@ -93,7 +92,6 @@ function CardColorDashboard(props) {
           "https://palette.matteocarrara.it/api/savePalette.php",
           {
             id_palette: id_palette,
-            id_utente: id_utente_display,
           },
           {
             headers: {
@@ -138,7 +136,7 @@ function CardColorDashboard(props) {
     if (deletingPaletteId && id_utente_display) {
       axios
         .delete(
-          `https://palette.matteocarrara.it/api/deletePalette.php?paletteId=${deletingPaletteId}&userId=${id_utente_display}`,
+          `https://palette.matteocarrara.it/api/deletePalette.php?paletteId=${deletingPaletteId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Includi il token nell'header dell'autorizzazione
