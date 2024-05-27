@@ -18,6 +18,7 @@ import AuthGoogleElement from "./AuthGoogleElement";
 import './style.css';
 
 function Login() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -62,7 +63,7 @@ function Login() {
     }
     event.preventDefault();
     axios
-      .post("https://palette.matteocarrara.it/api/login.php", {
+      .post(`${apiUrl}/login.php`, {
         email: email,
         password: password,
       })

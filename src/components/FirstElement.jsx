@@ -15,13 +15,14 @@ import "swiper/swiper-bundle.css";
 import CardColorHomePage from "./CardColorHomePage";
 
 function FirstElement() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true); // Imposta lo stato di caricamento su true
     axios
-      .get("https://palette.matteocarrara.it/api/getPalette.php")
+      .get(`${apiUrl}/getPalette.php`)
       .then((response) => {
         // Seleziona casualmente 10 elementi dall'array response.data
         const randomCards = response.data

@@ -8,12 +8,8 @@ import axios from "axios";
 import "./style.css";
 
 function PaletteCard() {
-  const id =
-    localStorage.getItem(
-      "id_utente"
-    ); /* Per estrapolare le informazioni dell'utente */
   const token = localStorage.getItem("token");
-  /* console.log(id.id_utente); */
+  const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,7 +45,7 @@ function PaletteCard() {
   const creaPalette = () => {
     axios
       .post(
-        "https://palette.matteocarrara.it/api/creaPalette.php",
+        `${apiUrl}/creaPalette.php`,
         {
           color1: color1,
           color2: color2,

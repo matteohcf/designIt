@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/Auth/LoggedIn';
 
 function AuthGoogleElement() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const auth = getAuth();
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function AuthGoogleElement() {
       signInWithPopup(auth, provider)
           .then((result) => {
               const user = result.user;
-              axios.post("https://palette.matteocarrara.it/api/authGoogle.php", {
+              axios.post(`${apiUrl}/authGoogle.php`, {
                   token: user.accessToken,
                   google: true,
                   email: user.email,

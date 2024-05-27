@@ -6,6 +6,7 @@ import './style.css';
 import { useSelector } from 'react-redux';
 
 function PalettePage() {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [cards, setCards] = useState([]);
     const [visibleCards, setVisibleCards] = useState(20);
     const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ function PalettePage() {
     useEffect(() => {
         setLoading(true);
         /* console.log(id_utente_display); */
-        axios.post('https://palette.matteocarrara.it/api/getPalette.php', {
+        axios.post(`${apiUrl}/getPalette.php`, {
             creating_user_id: id_utente_display,
         })
         .then(response => {

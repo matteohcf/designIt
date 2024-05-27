@@ -7,6 +7,7 @@ import axios from "axios";
 import "./style.css";
 
 function CardColor(props) {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [likes, setLikes] = useState(props.colors.likes);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ function CardColor(props) {
       /* console.log(token); */
       axios
         .post(
-          "https://palette.matteocarrara.it/api/addLike.php",
+          `${apiUrl}/addLike.php`,
           {
             id_palette: id_palette,
           },
@@ -83,7 +84,7 @@ function CardColor(props) {
     } else {
       axios
         .post(
-          "https://palette.matteocarrara.it/api/savePalette.php",
+          `${apiUrl}/savePalette.php`,
           {
             id_palette: id_palette,
           },

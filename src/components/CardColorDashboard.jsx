@@ -7,6 +7,7 @@ import axios from "axios";
 import "./style.css";
 
 function CardColorDashboard(props) {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [likes, setLikes] = useState(props.colors.likes);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ function CardColorDashboard(props) {
     } else {
       axios
         .post(
-          "https://palette.matteocarrara.it/api/addLike.php",
+          `${apiUrl}/addLike.php`,
           {
             id_palette: id_palette,
           },
@@ -89,7 +90,7 @@ function CardColorDashboard(props) {
     } else {
       axios
         .post(
-          "https://palette.matteocarrara.it/api/savePalette.php",
+          `${apiUrl}/savePalette.php`,
           {
             id_palette: id_palette,
           },
@@ -136,7 +137,7 @@ function CardColorDashboard(props) {
     if (deletingPaletteId && id_utente_display) {
       axios
         .delete(
-          `https://palette.matteocarrara.it/api/deletePalette.php?paletteId=${deletingPaletteId}`,
+          `${apiUrl}/deletePalette.php?paletteId=${deletingPaletteId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Includi il token nell'header dell'autorizzazione
